@@ -13,7 +13,6 @@
                 "showIn": 0,
                 "tags": [
                     "pmm_annotation",
-                    "$node_name",
                     "$service_name"
                 ],
                 "type": "tags"
@@ -123,6 +122,12 @@
         {
             "breadcrumbItemsMaxAmount": 6,
             "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -156,10 +161,16 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "short",
             "gauge": {
                 "maxValue": 100,
@@ -240,10 +251,16 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "ms",
             "gauge": {
                 "maxValue": 100,
@@ -324,10 +341,16 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "bytes",
             "gauge": {
                 "maxValue": 100,
@@ -411,7 +434,13 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "percent",
             "gauge": {
                 "maxValue": 100,
@@ -490,11 +519,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Docs per second inserted, updated, deleted or returned. Also showing replicated write ops and internal TTL index deletes.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -524,10 +560,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -590,7 +624,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -629,11 +663,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
-            "description": "Fraction of time spent per second waiting to acquire or actually holding locks",
+            "description": "Fraction of time spent per second waiting to acquire locks",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -664,10 +705,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -676,16 +715,6 @@
             "stack": true,
             "steppedLine": false,
             "targets": [
-                {
-                    "expr": "avg by (service_name) ((sum(increase(mongodb_mongod_locks_time_locked_global_microseconds_total{service_name=~\"$service_name\",database=\"Database\"}[$interval])) by (instance) / (increase(mongodb_mongod_instance_uptime_seconds{service_name=~\"$service_name\"}[$interval])*1000000)) or mongodb_mongod_global_lock_ratio{service_name=~\"$service_name\"})",
-                    "hide": false,
-                    "interval": "$interval",
-                    "intervalFactor": 1,
-                    "legendFormat": "Lock (pre-3.2 only)",
-                    "metric": "mongodb_mongod_global_lock_ratio",
-                    "refId": "J",
-                    "step": 300
-                },
                 {
                     "expr": "avg by (service_name) ((sum(increase(mongodb_mongod_locks_time_acquiring_global_microseconds_total{service_name=~\"$service_name\",database=\"Database\"}[$interval])) by (instance) / (increase(mongodb_mongod_instance_uptime_seconds{service_name=~\"$service_name\"}[$interval])*1000000)) or mongodb_mongod_global_lock_ratio{service_name=~\"$service_name\"})",
                     "hide": false,
@@ -705,7 +734,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -744,11 +773,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Time spent per second waiting to acquire locks",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -776,10 +812,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -807,7 +841,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -846,11 +880,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Unix or Window memory page faults. Not necessarily from mongodb.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -878,10 +919,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -908,7 +947,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -949,11 +988,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "MB processed through the journal in memory.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -981,10 +1027,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1022,7 +1066,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -1061,11 +1105,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "MB committed to disk for the journal.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1093,10 +1144,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1124,7 +1173,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -1163,226 +1212,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
-            "decimals": 2,
-            "description": "Journal commits per second.",
-            "editable": true,
-            "error": false,
-            "fill": 2,
-            "fillGradient": 0,
-            "grid": {},
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 28
-            },
-            "hiddenSeries": false,
-            "id": 84,
-            "legend": {
-                "alignAsTable": true,
-                "avg": true,
-                "current": false,
-                "max": true,
-                "min": true,
-                "show": true,
-                "sort": "avg",
-                "sortDesc": true,
-                "total": false,
-                "values": true
-            },
-            "lines": true,
-            "linewidth": 2,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "expr": "avg by (service_name,stage) (rate(mongodb_mongod_durability_time_milliseconds_sum{service_name=~\"$service_name\",stage!=\"dt\"}[$interval]) or irate(mongodb_mongod_durability_time_milliseconds_sum{service_name=~\"$service_name\",stage!=\"dt\"}[5m]))",
-                    "hide": false,
-                    "interval": "$interval",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{stage}}",
-                    "metric": "node_vmstat_nr_dirty",
-                    "refId": "J",
-                    "step": 300
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "MMAPv1 Journaling Time",
-            "tooltip": {
-                "msResolution": false,
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "$$hashKey": "object:908",
-                    "decimals": 2,
-                    "format": "ms",
-                    "label": "",
-                    "logBase": 1,
-                    "max": null,
-                    "min": 0,
-                    "show": true
-                },
-                {
-                    "$$hashKey": "object:909",
-                    "format": "short",
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": false
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
-            "decimals": 2,
-            "description": "Times spent per second on different tasks of journaling.",
-            "editable": true,
-            "error": false,
-            "fill": 6,
-            "fillGradient": 0,
-            "grid": {},
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 28
-            },
-            "hiddenSeries": false,
-            "id": 86,
-            "legend": {
-                "alignAsTable": true,
-                "avg": true,
-                "current": false,
-                "max": true,
-                "min": true,
-                "show": true,
-                "sort": "avg",
-                "sortDesc": true,
-                "total": false,
-                "values": true
-            },
-            "lines": true,
-            "linewidth": 2,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
-            "percentage": false,
-            "pointradius": 5,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": true,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "expr": "avg by (service_name,stage) (rate(mongodb_mongod_durability_time_milliseconds_count{service_name=~\"$service_name\",stage!=\"dt\"}[$interval]) or irate(mongodb_mongod_durability_time_milliseconds_count{service_name=~\"$service_name\",stage!=\"dt\"}[5m]))",
-                    "hide": false,
-                    "interval": "$interval",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{stage}}",
-                    "metric": "node_vmstat_nr_dirty",
-                    "refId": "J",
-                    "step": 300
-                },
-                {
-                    "expr": "avg by (service_name,stage) (mongodb_mongod_durability_time_milliseconds_count{service_name=~\"$service_name\",stage!=\"dt\"})",
-                    "hide": true,
-                    "interval": "",
-                    "legendFormat": "",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "MMAPv1 Journaling Time per Stage",
-            "tooltip": {
-                "msResolution": false,
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "$$hashKey": "object:753",
-                    "decimals": 2,
-                    "format": "ms",
-                    "label": "",
-                    "logBase": 1,
-                    "max": null,
-                    "min": 0,
-                    "show": true
-                },
-                {
-                    "$$hashKey": "object:754",
-                    "format": "short",
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": false
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Average time in ms, over full uptime of mongod process, the MMAP background flushes have taken.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1390,7 +1231,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 36
+                "y": 28
             },
             "hiddenSeries": false,
             "id": 91,
@@ -1410,10 +1251,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1440,7 +1279,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -1479,11 +1318,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Queue size of ops waiting to be submitted to storage engine layer. (N.b. see WiredTiger concurrency tickets for number of ops being processed simultaneously in storage engine layer.)",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1491,7 +1337,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 36
+                "y": 28
             },
             "hiddenSeries": false,
             "id": 40,
@@ -1511,10 +1357,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1541,7 +1385,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -1580,11 +1424,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Ops and Replicated Ops/sec, classified by legacy wire protocol type (query, insert, update, delete, getmore).",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1592,7 +1443,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 44
+                "y": 36
             },
             "hiddenSeries": false,
             "id": 60,
@@ -1614,10 +1465,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1653,7 +1502,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1692,11 +1541,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "This panel shows the number of objects (both data (scanned_objects) and index (scanned)) as well as the number of documents that were moved to a new location due to the size of the document growing. Moved documents only apply to the MMAPv1 storage engine.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1704,7 +1560,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 44
+                "y": 36
             },
             "hiddenSeries": false,
             "id": 32,
@@ -1726,10 +1582,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1764,7 +1618,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -1803,10 +1657,17 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1814,7 +1675,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 52
+                "y": 44
             },
             "hiddenSeries": false,
             "id": 81,
@@ -1825,6 +1686,8 @@
                 "max": true,
                 "min": true,
                 "show": true,
+                "sort": "avg",
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1832,10 +1695,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1883,7 +1744,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1922,10 +1783,17 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1933,7 +1801,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 52
+                "y": 44
             },
             "hiddenSeries": false,
             "id": 90,
@@ -1944,6 +1812,8 @@
                 "max": true,
                 "min": true,
                 "show": true,
+                "sort": "avg",
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1951,10 +1821,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2002,7 +1870,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -2043,13 +1911,13 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 60
+                "y": 52
             },
             "id": 1009,
             "panels": [
                 {
                     "cacheTimeout": null,
-                    "content": "<h4><b><font color=#e68a00><center><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$node_name</a></center></font></b></h4>\n\n\n",
+                    "content": "<h4 style='color:#e68a00;font-weight:bold;text-align:center'><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$node_name</a></h4>\n\n\n",
                     "datasource": null,
                     "gridPos": {
                         "h": 2,
@@ -2328,7 +2196,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "This shows the number of active connections on the server. Keep in mind the hard limit on the maximum number of connections set by your distribution.\n\nYou can read more about the [connection numbers](https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/#number-of-connections).",
                     "editable": true,
@@ -2401,7 +2269,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -2446,7 +2314,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "This shows the number of open cursors for each shard in the cluster. A cursor in MongoDB is a pointer to the result of a given query that can be iterated over. By default a cursor times out after 10 minutes.",
                     "editable": true,
@@ -2520,7 +2388,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -2571,7 +2439,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 61
+                "y": 53
             },
             "id": 291,
             "panels": [
@@ -2585,7 +2453,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "The parameter shows how long a system has been \u201cup\u201d and running without a shut down or restart.",
                     "editable": true,
@@ -2673,7 +2541,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "#d44a3a"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "The system load is a measurement of the computational work the system is performing. Each running process either using or waiting for CPU resources adds 1 to the load.",
                     "format": "none",
@@ -2759,7 +2627,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 1,
                     "description": "RAM (Random Access Memory) is the hardware in a computing device where the operating system, application programs and data in current use are kept so they can be quickly reached by the device's processor.",
                     "editable": true,
@@ -2847,7 +2715,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "#299c46"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Percent of Memory Available\nNote: on Modern Linux Kernels amount of Memory Available for application is not the same as Free+Cached+Buffers",
                     "format": "percent",
@@ -2933,7 +2801,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "RAM + SWAP",
                     "editable": true,
@@ -3021,7 +2889,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Sum of disk space on all partitions. Note  it can be significantly over-reported in some installations",
                     "editable": true,
@@ -3115,7 +2983,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "#299c46"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Lowest percent of the disk space available",
                     "format": "percent",
@@ -3194,8 +3062,8 @@
                 },
                 {
                     "cacheTimeout": null,
-                    "content": "<h5><b><font color=#e68a00><center><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></center></font></b></h5>",
-                    "datasource": "Prometheus",
+                    "content": "<h5 style='color:#e68a00;font-weight:bold;text-align:center'><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></h5>",
+                    "datasource": null,
                     "description": "",
                     "gridPos": {
                         "h": 2,
@@ -3239,7 +3107,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "The CPU time is measured in clock ticks or seconds. It is useful to measure CPU time as a percentage of the CPU's capacity, which is called the CPU usage.",
                     "editable": true,
@@ -3322,7 +3190,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3370,7 +3238,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "When a system is running with maximum CPU utilization, the transmitting and receiving threads must all share the available CPU. This will cause data to be queued more frequently to cope with the lack of CPU. CPU Saturation may be measured as the length of a wait queue, or the time spent waiting on the queue.",
                     "editable": true,
@@ -3463,7 +3331,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3506,7 +3374,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Disk I/O includes read or write or input/output operations involving a physical disk. It is the speed with which the data transfer takes place between the hard disk drive and RAM.\n\nSwap Activity is memory management that involves swapping sections of memory to and from physical storage.",
                     "editable": true,
@@ -3633,7 +3501,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3672,7 +3540,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Network traffic refers to the amount of data moving across a network at a given point in time.",
                     "editable": true,
@@ -3760,7 +3628,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3800,7 +3668,7 @@
         }
     ],
     "refresh": "1m",
-    "schemaVersion": 22,
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [
         "MongoDB",
@@ -3814,7 +3682,7 @@
                 "auto_count": 200,
                 "auto_min": "1s",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "hide": 0,
                 "includeAll": false,
                 "label": "Interval",
@@ -3872,11 +3740,10 @@
                 "allFormat": "glob",
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mongodb_up,cluster)",
                 "hide": 0,
                 "includeAll": true,
-                "index": -1,
                 "label": "Cluster",
                 "multi": false,
                 "multiFormat": "glob",
@@ -3886,7 +3753,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": null,
                 "tags": [],
                 "tagsQuery": null,
@@ -3897,11 +3764,10 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Node Name",
                 "multi": false,
                 "multiFormat": "glob",
@@ -3911,7 +3777,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": null,
                 "tags": [],
                 "tagsQuery": "",
@@ -3922,11 +3788,10 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 0,
                 "includeAll": false,
-                "index": -1,
                 "label": "Service Name",
                 "multi": false,
                 "multiFormat": "glob",
@@ -3936,7 +3801,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": null,
                 "tags": [],
                 "tagsQuery": "",
@@ -3946,11 +3811,10 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mongodb_up{service_name=~\"$service_name\"}, service_name)",
                 "hide": 2,
                 "includeAll": false,
-                "index": -1,
                 "label": "Service Name",
                 "multi": false,
                 "name": "crop_service",
@@ -3959,7 +3823,7 @@
                 "refresh": 2,
                 "regex": "/(.?.?.?.?.?.?.?.?.?.?.?.?.?).*/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3970,11 +3834,10 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mongodb_up{node_name=\"$node_name\"},node_name)",
                 "hide": 2,
                 "includeAll": false,
-                "index": -1,
                 "label": "Crop Node Name",
                 "multi": false,
                 "multiFormat": "regex values",
@@ -3985,7 +3848,7 @@
                 "refresh_on_load": false,
                 "regex": "/(.?.?.?.?.?.?.?.?.?.?.?.?.?).*/",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": null,
                 "tags": [],
                 "tagsQuery": null,
@@ -3995,11 +3858,10 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, environment)",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Environment",
                 "multi": true,
                 "name": "environment",
@@ -4008,7 +3870,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4018,11 +3880,10 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, replication_set)",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Replication Set",
                 "multi": true,
                 "name": "replication_set",
@@ -4031,7 +3892,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4041,11 +3902,10 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_stat_database_tup_fetched{service_name=~\"$service_name\",datname!~\"template.*|postgres\"},datname)",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Database",
                 "multi": true,
                 "name": "database",
@@ -4054,7 +3914,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4064,11 +3924,10 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, node_type)",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Type",
                 "multi": true,
                 "name": "node_type",
@@ -4077,7 +3936,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4087,11 +3946,10 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_type)",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Type",
                 "multi": true,
                 "name": "service_type",
@@ -4100,7 +3958,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4110,11 +3968,32 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "hide": 2,
+                "includeAll": true,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, schema)",
                 "hide": 2,
                 "includeAll": true,
-                "index": -1,
                 "label": "Schema",
                 "multi": true,
                 "name": "schema",
@@ -4123,7 +4002,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

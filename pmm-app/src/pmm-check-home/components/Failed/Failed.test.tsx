@@ -8,6 +8,7 @@ describe('Failed::', () => {
     const root = shallow(<Failed failed={[1, 0, 1]} isSttEnabled hasNoAccess={false} />);
 
     const spans = root.find('div a > span');
+
     expect(spans.at(0).text()).toEqual('1');
     expect(spans.at(2).text()).toEqual('0');
     expect(spans.at(4).text()).toEqual('1');
@@ -31,7 +32,7 @@ describe('Failed::', () => {
   it('should render a message when the user only has reader access', () => {
     const root = shallow(<Failed failed={[1, 0, 1]} isSttEnabled hasNoAccess />);
 
-    expect(root.find('[data-qa="db-check-panel-no-access"]').text()).toEqual('Insufficient access rights.');
+    expect(root.find('[data-qa="unauthorized"]').text()).toEqual('Insufficient access permissions.');
     root.unmount();
   });
 });

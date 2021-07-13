@@ -11,7 +11,7 @@ import datetime
 import re
 
 __version__ = '1.0.0'
-refresh_intervals = ['5s','10s','30s','1m','5m','15m','30m','1h','2h','1d']
+refresh_intervals = ['1s','5s','1m','5m','1h','6h','1d']
 year = str(datetime.date.today())[:4]
 
 def set_title(dashboard):
@@ -392,13 +392,18 @@ def set_hide_timepicker(dashboard):
 
 def add_annotation(dashboard):
     """Add PMM annotation."""
-    tag = "pmm_annotation"
+    TAG = "pmm_annotation"
     prompt = 'Add default PMM annotation (conventional: **Yes**) [%s]: ' % (
         "No",
     )
     user_input = raw_input(prompt)
     if user_input:
         if user_input == 'Yes':
+            active_variables = [TAG]
+            for templating in dashboard['templating']['list']:
+                if templating['type'] == 'query' and templating['hide'] == 0:
+                    active_variables.append('$' + templating['name'])
+
             for annotation in copy.deepcopy(dashboard['annotations']['list']):
                 dashboard['annotations']['list'].remove(annotation)
             add_item = {
@@ -411,7 +416,7 @@ def add_annotation(dashboard):
                 'matchAny': True,
                 'name': "PMM Annotations",
                 'showIn': 0,
-                'tags': [ tag, '$node_name', '$service_name'],
+                'tags': active_variables,
                 'type': "tags"
             }
             dashboard['annotations']['list'].append(add_item)

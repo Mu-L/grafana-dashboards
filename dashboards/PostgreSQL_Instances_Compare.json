@@ -1227,7 +1227,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 6,
                     "fillGradient": 0,
@@ -1248,7 +1248,7 @@
                         "min": true,
                         "show": true,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -1261,7 +1261,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -1312,7 +1312,7 @@
                     "title": "$service_name - PostgreSQL Connections",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1354,7 +1354,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -1388,7 +1388,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -1440,7 +1440,7 @@
                     "title": "$service_name - PostgreSQL Connections",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1482,7 +1482,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -1514,7 +1514,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -1562,7 +1562,7 @@
                     "title": "$service_name - Active Connections",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1604,7 +1604,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -1636,7 +1636,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -1686,7 +1686,7 @@
                     "title": "$service_name - Active Connections",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1741,7 +1741,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -1773,7 +1773,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -1837,7 +1837,7 @@
                     "title": "$service_name - Tuples",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1877,7 +1877,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -1909,7 +1909,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -1975,7 +1975,7 @@
                     "title": "$service_name - Tuples",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2015,7 +2015,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2048,7 +2048,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2092,7 +2092,7 @@
                     "title": "$service_name - Read Tuple Activity",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2132,7 +2132,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2165,7 +2165,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2211,7 +2211,7 @@
                     "title": "$service_name - Read Tuple Activity",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2251,7 +2251,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2284,7 +2284,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2338,7 +2338,7 @@
                     "title": "$service_name - Tuples Changes by Queries",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2378,7 +2378,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2411,7 +2411,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2467,7 +2467,7 @@
                     "title": "$service_name - Tuples Changes by Queries",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2522,7 +2522,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2555,7 +2555,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2599,7 +2599,7 @@
                     "title": "$service_name - Transactions",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2639,7 +2639,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2672,7 +2672,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2718,7 +2718,7 @@
                     "title": "$service_name - Transactions",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2758,7 +2758,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2791,7 +2791,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2825,7 +2825,7 @@
                     "title": "$service_name - Duration of Transactions",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2865,7 +2865,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -2898,7 +2898,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -2934,7 +2934,7 @@
                     "title": "$service_name - Duration of Transactions",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2989,7 +2989,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 1,
                     "fillGradient": 0,
@@ -3021,7 +3021,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3038,7 +3038,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
-                            "expr": "avg by (service_name,datname) (max_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"template.*\"}[5m]))",
+                            "expr": "avg by (service_name,datname) (max_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m]))",
                             "format": "time_series",
                             "interval": "$interval",
                             "intervalFactor": 1,
@@ -3053,7 +3053,7 @@
                     "title": "$service_name - Number of Temp Files",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3093,7 +3093,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 1,
                     "fillGradient": 0,
@@ -3125,7 +3125,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3144,7 +3144,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
-                            "expr": "avg by (service_name,dat) (max_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"template.*\"}[5m]))",
+                            "expr": "avg by (service_name,dat) (max_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_files{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m]))",
                             "format": "time_series",
                             "interval": "$interval",
                             "intervalFactor": 1,
@@ -3159,7 +3159,7 @@
                     "title": "$service_name - Number of Temp Files",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3199,7 +3199,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 1,
                     "fillGradient": 0,
@@ -3232,7 +3232,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3255,7 +3255,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
-                            "expr": "avg by (service_name,datname) (max_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[5m]))",
+                            "expr": "avg by (service_name,datname) (max_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m]))",
                             "format": "time_series",
                             "hide": false,
                             "interval": "$interval",
@@ -3264,7 +3264,7 @@
                             "refId": "A"
                         },
                         {
-                            "expr": "rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or\nirate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[5m])",
+                            "expr": "rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or\nirate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m])",
                             "format": "time_series",
                             "hide": true,
                             "interval": "$interval",
@@ -3280,7 +3280,7 @@
                     "title": "$service_name - Size of Temp Files",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3320,7 +3320,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 1,
                     "fillGradient": 0,
@@ -3353,7 +3353,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3378,7 +3378,7 @@
                     "steppedLine": false,
                     "targets": [
                         {
-                            "expr": "max_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[5m])",
+                            "expr": "max_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or \nmax_over_time(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m])",
                             "format": "time_series",
                             "hide": false,
                             "interval": "$interval",
@@ -3387,7 +3387,7 @@
                             "refId": "A"
                         },
                         {
-                            "expr": "rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or\nirate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[5m])",
+                            "expr": "rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or\nirate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m])",
                             "format": "time_series",
                             "hide": true,
                             "interval": "$interval",
@@ -3403,7 +3403,7 @@
                     "title": "$service_name - Size of Temp Files",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3458,7 +3458,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -3494,7 +3494,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3625,7 +3625,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3665,7 +3665,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -3701,7 +3701,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3834,7 +3834,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3874,7 +3874,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "editable": true,
                     "error": false,
@@ -3909,7 +3909,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -3987,7 +3987,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4027,7 +4027,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "editable": true,
                     "error": false,
@@ -4062,7 +4062,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -4142,7 +4142,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4197,7 +4197,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -4230,7 +4230,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -4275,7 +4275,7 @@
                     "title": "$service_name - Operations with Blocks",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4316,7 +4316,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -4349,7 +4349,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -4396,7 +4396,7 @@
                     "title": "$service_name - Operations with Blocks",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4437,7 +4437,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -4475,7 +4475,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -4765,7 +4765,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4805,7 +4805,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -4843,7 +4843,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5135,7 +5135,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -5190,7 +5190,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "Based on pg_stat_database_conflicts view",
                     "fill": 2,
@@ -5224,7 +5224,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5298,7 +5298,7 @@
                     "title": "$service_name - Canceled Queries",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -5338,7 +5338,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "Based on pg_stat_database_conflicts view",
                     "fill": 2,
@@ -5372,7 +5372,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5448,7 +5448,7 @@
                     "title": "$service_name - Canceled Queries",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -5488,7 +5488,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -5524,7 +5524,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5557,7 +5557,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -5597,7 +5597,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -5633,7 +5633,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5668,7 +5668,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -5708,7 +5708,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -5743,7 +5743,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5789,7 +5789,7 @@
                     "title": "$service_name - Checkpoint stats",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -5829,7 +5829,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -5864,7 +5864,7 @@
                         "dataLinks": [
                             {
                                 "targetBlank": true,
-                                "title": "PostgreSQL Instance Summary - ${__series.labels.service_name}",
+                                "title": "PostgreSQL Instance Summary - ${__field.labels.service_name}",
                                 "url": "/graph/d/postgresql-instance-summary/postgresql-instance-summary?var-service_name=${__field.labels.service_name}&$__url_time_range"
                             }
                         ]
@@ -5912,7 +5912,7 @@
                     "title": "$service_name - Checkpoint stats",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -6019,7 +6019,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6031,7 +6031,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6041,7 +6041,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_up,node_name)",
                 "hide": 0,
                 "includeAll": true,
@@ -6053,7 +6053,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6063,7 +6063,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_up{node_name=~\"$node_name\"}, service_name)",
                 "hide": 0,
                 "includeAll": true,
@@ -6075,7 +6075,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6085,7 +6085,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6097,7 +6097,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6107,7 +6107,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6119,7 +6119,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6129,7 +6129,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6141,7 +6141,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6151,7 +6151,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6163,7 +6163,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6173,7 +6173,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6185,7 +6185,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6195,7 +6195,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6207,7 +6207,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6217,7 +6217,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6229,7 +6229,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6239,7 +6239,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6251,7 +6251,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6261,7 +6261,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6273,7 +6273,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6283,7 +6283,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6295,7 +6295,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6305,7 +6305,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6317,7 +6317,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6327,7 +6327,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6339,7 +6339,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6349,7 +6349,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6361,7 +6361,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6371,7 +6371,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6383,7 +6383,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6393,7 +6393,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6405,7 +6405,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6415,7 +6415,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6427,7 +6427,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6437,7 +6437,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6449,7 +6449,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6459,7 +6459,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6471,7 +6471,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6481,7 +6481,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6493,7 +6493,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6503,7 +6503,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6515,7 +6515,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6525,7 +6525,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6537,7 +6537,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6547,7 +6547,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6559,7 +6559,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6569,7 +6569,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6581,7 +6581,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6591,7 +6591,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6603,7 +6603,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6613,7 +6613,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6625,7 +6625,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6635,7 +6635,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6647,7 +6647,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6657,7 +6657,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6669,7 +6669,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6679,7 +6679,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6691,7 +6691,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6701,7 +6701,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6713,7 +6713,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6723,7 +6723,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6735,7 +6735,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6745,7 +6745,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6757,7 +6757,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6767,7 +6767,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6779,7 +6779,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6789,7 +6789,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6801,7 +6801,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6811,7 +6811,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6823,7 +6823,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6833,7 +6833,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6845,7 +6845,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6855,7 +6855,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6867,7 +6867,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6877,7 +6877,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -6889,7 +6889,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6899,7 +6899,7 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, environment)",
                 "hide": 2,
                 "includeAll": true,
@@ -6911,7 +6911,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6921,7 +6921,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, cluster)",
                 "hide": 2,
                 "includeAll": true,
@@ -6933,7 +6933,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6943,7 +6943,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, replication_set)",
                 "hide": 2,
                 "includeAll": true,
@@ -6955,7 +6955,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6965,7 +6965,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_stat_database_tup_fetched{service_name=~\"$service_name\",datname!~\"template.*|postgres\"},datname)",
                 "hide": 2,
                 "includeAll": true,
@@ -6977,7 +6977,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -6987,7 +6987,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, node_type)",
                 "hide": 2,
                 "includeAll": true,
@@ -6999,7 +6999,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -7009,7 +7009,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_type)",
                 "hide": 2,
                 "includeAll": true,
@@ -7021,7 +7021,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -7031,7 +7031,30 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "hide": 2,
+                "includeAll": true,
+                "index": -1,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, schema)",
                 "hide": 2,
                 "includeAll": true,
@@ -7043,7 +7066,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

@@ -13,8 +13,7 @@
                 "showIn": 0,
                 "tags": [
                     "pmm_annotation",
-                    "$node_name",
-                    "$service_name"
+                    "$node_name"
                 ],
                 "type": "tags"
             },
@@ -112,6 +111,12 @@
         {
             "breadcrumbItemsMaxAmount": 6,
             "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -122,7 +127,6 @@
             "id": 999,
             "isRootDashboard": false,
             "links": [],
-            "options": {},
             "targets": [
                 {
                     "expr": "",
@@ -138,8 +142,13 @@
             "type": "digiapulssi-breadcrumb-panel"
         },
         {
-            "content": "<h1><i><font color=#5991A7><b><center>Data for </font><font color=#e68a00>$node_name</font> <font color=#5991A7> with</font> </font><font color=#e68a00>$interval</font> <font color=#5991A7>resolution</center></b></font></i></h1>",
             "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -148,8 +157,11 @@
             },
             "id": 238,
             "links": [],
-            "mode": "html",
-            "options": {},
+            "options": {
+                "content": "<h1 style='color:#5991A7;font-weight:bold;text-align:center;font-style:italic'>Data for <span style='color:#e68a00'>$node_name</span> with <span style='color:#e68a00'>$interval</span> resolution</h1>",
+                "mode": "html"
+            },
+            "pluginVersion": "7.3.7",
             "title": "",
             "type": "text"
         },
@@ -193,9 +205,16 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Basic memory usage",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 6,
             "fillGradient": 0,
             "gridPos": {
@@ -216,7 +235,7 @@
                 "show": true,
                 "sideWidth": 350,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -226,10 +245,11 @@
             "maxPerRow": 6,
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -262,7 +282,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "avg by (node_name) (max_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval]) or\nmax_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[5m]))",
+                    "expr": "avg by (node_name) (avg_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[5m]))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -272,7 +292,7 @@
                     "step": 240
                 },
                 {
-                    "expr": "avg by (node_name) (max(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}) - (max(node_memory_MemFree_bytes{node_name=~\"$node_name\"}) + max(node_memory_Buffers_bytes{node_name=~\"$node_name\"}) + (max(node_memory_Cached_bytes{node_name=~\"$node_name\"}))))",
+                    "expr": "clamp_min(avg by (node_name) (((avg_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[5m])) - ((avg_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[5m]))+ \n(avg_over_time(node_memory_Buffers_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_Buffers_bytes{node_name=~\"$node_name\"}[5m])) + \n(avg_over_time(node_memory_Cached_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_Cached_bytes{node_name=~\"$node_name\"}[5m]))))),0)",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -282,7 +302,7 @@
                     "step": 240
                 },
                 {
-                    "expr": "avg by (node_name) (max(node_memory_Cached_bytes{node_name=~\"$node_name\"}) without (job))",
+                    "expr": "avg by (node_name) (avg(avg_over_time(node_memory_Cached_bytes{node_name=~\"$node_name\",job=~\"rds.*|node.*\"}[$interval]) or avg_over_time(node_memory_Cached_bytes{node_name=~\"$node_name\",job=~\"rds.*|node.*\"}[5m])) without (job))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -292,7 +312,7 @@
                     "step": 240
                 },
                 {
-                    "expr": "avg by (node_name) (max_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[5m]))",
+                    "expr": "avg by (node_name) (avg_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[5m]))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -302,7 +322,7 @@
                     "step": 240
                 },
                 {
-                    "expr": "(max_over_time(node_memory_SwapTotal_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_SwapTotal_bytes{node_name=~\"$node_name\"}[5m])) - \n(max_over_time(node_memory_SwapFree_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_SwapFree_bytes{node_name=~\"$node_name\"}[5m]))",
+                    "expr": "(avg_over_time(node_memory_SwapTotal_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_SwapTotal_bytes{node_name=~\"$node_name\"}[5m])) - \n(avg_over_time(node_memory_SwapFree_bytes{node_name=~\"$node_name\"}[$interval]) or av_over_time(node_memory_SwapFree_bytes{node_name=~\"$node_name\"}[5m]))",
                     "format": "time_series",
                     "hide": true,
                     "interval": "$interval",
@@ -312,7 +332,7 @@
                     "step": 240
                 },
                 {
-                    "expr": "avg by (node_name) (max_over_time(node_memory_Buffers_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_Buffers_bytes{node_name=~\"$node_name\"}[5m]))",
+                    "expr": "avg by (node_name) (avg_over_time(node_memory_Buffers_bytes{node_name=~\"$node_name\"}[$interval]) or avg_over_time(node_memory_Buffers_bytes{node_name=~\"$node_name\"}[5m]))",
                     "format": "time_series",
                     "interval": "$interval",
                     "intervalFactor": 1,
@@ -367,8 +387,15 @@
             "bars": true,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
@@ -396,10 +423,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -409,7 +437,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "avg by (node_name) ((max_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[5m])) * 100 /\n(max_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval])))",
+                    "expr": "avg by (node_name) ((max_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_MemFree_bytes{node_name=~\"$node_name\"}[5m])) * 100 /\n(max_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval]) or max_over_time(node_memory_MemTotal_bytes{node_name=~\"$node_name\"}[$interval])) or \n(100 - azure_memory_percent_average{node_name=~\"$node_name\"}))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -425,7 +453,7 @@
             "title": "Free Memory Percent",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -494,7 +522,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Inactive** - Memory which has been less recently used.  It is more eligible to be reclaimed for other purposes\n\n**Active** - Memory that has been used more recently and usually not reclaimed unless absolutely necessary",
                     "fill": 2,
@@ -564,7 +592,7 @@
                     "title": "Total Pages Size",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -622,7 +650,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Inactive** Anonymous and swap cache on inactive LRU list, including tmpfs (shmem)\n\n**Active**  Anonymous and swap cache on active least-recently-used (LRU) list, including tmpfs",
                     "fill": 2,
@@ -752,7 +780,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Inactive**  File-backed memory on inactive LRU list\n\n**Active** File-backed memory on active LRU list",
                     "fill": 2,
@@ -887,7 +915,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "",
                     "fill": 2,
@@ -1036,7 +1064,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "",
                     "fill": 2,
@@ -1206,16 +1234,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**PageTables**  Memory used to map between virtual and physical memory addresses\n\n**AnonPages** Non-file backed pages mapped into userspace page tables\n\n**SwapCache**  Memory that keeps track of pages that have been fetched from swap but not yet been modified\n\n**Slab**  Memory used by the kernel to cache data structures for its own use (caches like inode, dentry, etc)\n\n**Swap**  Swap space used\n\n**Hardware Corrupted** Amount of RAM that the kernel identified as corrupted / not working\n\n**Mapped** Files which have been mmaped, such as libraries\n\n**Dirty** Memory which is waiting to get written back to the disk\n\n**Writeback** Memory which is actively being written back to the disk\n\n**WritebackTmp** Memory used by FUSE for temporary writeback buffers\n\n**Shmem** Total memory used by shared memory (shmem) and tmpfs",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 0,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 24,
                         "x": 0,
-                        "y": 39
+                        "y": 15
                     },
                     "hiddenSeries": false,
                     "id": 24,
@@ -1239,9 +1274,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -1419,16 +1455,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Total** total size of vmalloc memory area\n\n**Used** amount of vmalloc area which is used\n\n**Chunk** largest contiguous block of vmalloc area which is free",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 6,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 47
+                        "y": 23
                     },
                     "hiddenSeries": false,
                     "id": 70,
@@ -1442,7 +1485,7 @@
                         "show": true,
                         "sideWidth": null,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -1452,9 +1495,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -1512,7 +1556,7 @@
                     "title": "Vmalloc",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1570,16 +1614,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Total** Memory used by shared memory (shmem) and tmpfs\n\n**HugePages** Memory used by shared memory (shmem) and tmpfs allocated with huge pages\n\n**PmdMapped**  Shared memory mapped into userspace with huge pages",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 47
+                        "y": 23
                     },
                     "hiddenSeries": false,
                     "id": 138,
@@ -1593,7 +1644,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -1603,9 +1654,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -1654,7 +1706,7 @@
                     "title": "Shared Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -1712,16 +1764,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 0,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 55
+                        "y": 31
                     },
                     "hiddenSeries": false,
                     "id": 160,
@@ -1735,7 +1794,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -1745,9 +1804,10 @@
                     "maxPerRow": 2,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -1778,7 +1838,7 @@
                     "title": "Kernel Memory Stack",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -1836,16 +1896,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Committed_AS**  Amount of memory presently allocated on the system\n\n**CommitLimit**  Amount of  memory currently available to be allocated on the system",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 55
+                        "y": 31
                     },
                     "hiddenSeries": false,
                     "id": 135,
@@ -1869,9 +1936,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -1915,7 +1983,7 @@
                     "title": "Committed Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -1974,16 +2042,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**AnonPages** Non-file backed pages mapped into userspace page tables\n\n**AnonHugePages** Non-file backed huge pages mapped into userspace page tables",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 63
+                        "y": 39
                     },
                     "hiddenSeries": false,
                     "id": 129,
@@ -2007,9 +2082,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2049,7 +2125,7 @@
                     "title": "Non-file Backed Pages Size",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2107,16 +2183,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Slab** in-kernel data structures cache\n**SReclaimable** Part of Slab, that might be reclaimed, such as caches\n **SUnreclaim** Part of Slab, that cannot be reclaimed on memory pressure",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 6,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 63
+                        "y": 39
                     },
                     "hiddenSeries": false,
                     "id": 242,
@@ -2130,7 +2213,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -2140,9 +2223,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2191,7 +2275,7 @@
                     "title": "Kernel Cache",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -2250,15 +2334,22 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 71
+                        "y": 47
                     },
                     "hiddenSeries": false,
                     "id": 128,
@@ -2284,9 +2375,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2330,7 +2422,7 @@
                     "title": "DirectMap Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2388,16 +2480,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Bounce** Memory used for block device \"bounce buffers\"",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 0,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 71
+                        "y": 47
                     },
                     "hiddenSeries": false,
                     "id": 159,
@@ -2411,7 +2510,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -2421,9 +2520,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2454,7 +2554,7 @@
                     "title": "Bounce Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -2514,16 +2614,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**NFS_Unstable** NFS pages sent to the server, but not yet committed to stable storage",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 79
+                        "y": 55
                     },
                     "hiddenSeries": false,
                     "id": 132,
@@ -2547,9 +2654,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2575,7 +2683,7 @@
                     "title": "NFS Pages Size",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2633,16 +2741,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Unevictable** Amount of unevictable memory that can't be swapped out for a variety of reasons\n\n**MLocked** Size of pages locked to memory using the mlock() system call",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 79
+                        "y": 55
                     },
                     "hiddenSeries": false,
                     "id": 137,
@@ -2666,9 +2781,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2703,7 +2819,7 @@
                     "title": "Unevictable/MLocked Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -2762,16 +2878,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**HugePages** Total size of the pool of huge pages\n\n**Hugepagesize**  Huge Page size",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 87
+                        "y": 63
                     },
                     "hiddenSeries": false,
                     "id": 71,
@@ -2795,9 +2918,10 @@
                     "maxPerRow": 2,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 5,
                     "points": false,
                     "renderer": "flot",
@@ -2837,7 +2961,7 @@
                     "title": "Huge Pages Size",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2897,16 +3021,23 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "description": "**Total** Number of hugepages being allocated by the kernel (Defined with vm.nr_hugepages)\n\n**Free** The number of hugepages not being allocated by a process\n\n**Surp**  The number of hugepages in the pool above the value in vm.nr_hugepages. The maximum number of surplus hugepages is controlled by vm.nr_overcommit_hugepages.\n\n**Rsvd**  The number of  huge pages for which a commitment to allocate from the pool has been made, but no allocation has yet been made",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 6,
                     "fillGradient": 0,
                     "gridPos": {
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 87
+                        "y": 63
                     },
                     "hiddenSeries": false,
                     "id": 140,
@@ -2921,7 +3052,7 @@
                         "show": true,
                         "sideWidth": null,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -2931,9 +3062,10 @@
                     "maxPerRow": 6,
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": false,
                     "renderer": "flot",
@@ -2994,7 +3126,7 @@
                     "title": "HugePages Statistic",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3068,7 +3200,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -3149,7 +3281,7 @@
                     "title": "Memory Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3258,7 +3390,7 @@
                     "title": "IO activity",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3316,7 +3448,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -3393,7 +3525,7 @@
                     "title": "Cache Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3451,7 +3583,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -3537,7 +3669,7 @@
                     "title": "Anonymous Memory Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3595,7 +3727,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -3616,6 +3748,8 @@
                         "rightSide": false,
                         "show": true,
                         "sideWidth": 350,
+                        "sort": "avg",
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -3669,7 +3803,7 @@
                     "title": "Shmem Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3727,7 +3861,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 2,
                     "fillGradient": 0,
@@ -3749,7 +3883,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -3840,7 +3974,7 @@
                     "title": "Dirty Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 1,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -3898,7 +4032,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 0,
                     "fillGradient": 0,
@@ -3920,7 +4054,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -3963,7 +4097,7 @@
                     "title": "Pages Allocated to Page Tables",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4021,7 +4155,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 0,
                     "fill": 0,
                     "fillGradient": 0,
@@ -4043,7 +4177,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -4087,7 +4221,7 @@
                     "title": "Bounce Buffer Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 1,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4145,7 +4279,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -4239,7 +4373,7 @@
                     "title": "Misc Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4297,7 +4431,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 0,
                     "fillGradient": 0,
@@ -4319,7 +4453,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -4363,7 +4497,7 @@
                     "title": "Pages Mapped by Files",
                     "tooltip": {
                         "shared": true,
-                        "sort": 1,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4421,7 +4555,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 0,
                     "fillGradient": 0,
@@ -4443,7 +4577,7 @@
                         "show": true,
                         "sideWidth": 350,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -4486,7 +4620,7 @@
                     "title": "Kernel Stack Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4544,7 +4678,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -4629,7 +4763,7 @@
                     "title": "Slab Pages",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4703,7 +4837,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -4789,7 +4923,7 @@
                     "title": "Allocations",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4847,7 +4981,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -4933,7 +5067,7 @@
                     "title": "Refill",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -4991,7 +5125,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -5077,7 +5211,7 @@
                     "title": "Direct Scan",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -5135,7 +5269,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -5221,7 +5355,7 @@
                     "title": "Kswapd Scan",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -5341,7 +5475,7 @@
                     "title": "Steal Direct",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -5399,7 +5533,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -5485,7 +5619,7 @@
                     "title": "Steal Kswapd",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -5526,7 +5660,7 @@
         }
     ],
     "refresh": "1m",
-    "schemaVersion": 21,
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [
         "Percona",
@@ -5539,6 +5673,7 @@
                 "auto_count": 200,
                 "auto_min": "1s",
                 "current": {},
+                "error": null,
                 "hide": 0,
                 "label": "Interval",
                 "name": "interval",
@@ -5592,8 +5727,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(up{node_type=~\"generic|remote_rds|container|remote\"}, node_name)",
+                "error": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": "Node Name",
@@ -5604,7 +5740,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5614,8 +5750,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\",node_name=~\"$node_name\"}, service_name)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Service Name",
@@ -5626,7 +5763,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5636,8 +5773,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, environment)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Environment",
@@ -5648,7 +5786,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5658,8 +5796,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, cluster)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Cluster",
@@ -5670,7 +5809,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5680,8 +5819,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, replication_set)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Replication Set",
@@ -5692,7 +5832,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5702,8 +5842,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_stat_database_tup_fetched{service_name=~\"$service_name\",datname!~\"template.*|postgres\"},datname)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Database",
@@ -5714,7 +5855,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5724,8 +5865,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, node_type)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Type",
@@ -5736,7 +5878,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5746,8 +5888,9 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_type)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Type",
@@ -5758,7 +5901,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5768,8 +5911,32 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "error": null,
+                "hide": 2,
+                "includeAll": true,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, schema)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Schema",
@@ -5780,7 +5947,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

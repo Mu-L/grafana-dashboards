@@ -10,8 +10,8 @@
     },
     "keywords": ["percona", "query analytics", "pmm", "qan"],
     "links": [
-      { "name": "Project site", "url": "https://github.com/percona/qan-app" },
-      { "name": "AGPL-3 License", "url": "https://github.com/percona/qan-app/blob/master/LICENSE" }
+      { "name": "Project site", "url": "https://github.com/percona/pmm" },
+      { "name": "AGPL-3 License", "url": "https://github.com/percona/pmm/blob/PMM-2.0/LICENSE" }
     ],
     "logos": {
       "small": "img/pmm-logo.png",
@@ -23,14 +23,6 @@
   "includes": [
     { "type": "dashboard", "name": "pmm-qan", "path": "dashboards/pmm-qan.json" },
     { "type": "panel", "name": "pmm-qan-app-panel" },
-    { "type": "dashboard", "name": "PMM Inventory", "path": "dashboards/pmm-inventory.json" },
-    { "type": "panel", "name": "pmm-inventory-panel" },
-    { "type": "dashboard", "name": "PMM Settings", "path": "dashboards/pmm-settings.json" },
-    { "type": "panel", "name": "pmm-settings-panel" },
-    { "type": "dashboard", "name": "pmm-add-instance", "path": "dashboards/pmm-add-instance.json" },
-    { "type": "panel", "name": "pmm-add-instance-app-panel" },
-    { "type": "dashboard", "name": "pmm-checks", "path": "dashboards/pmm-checks.json" },
-    { "type": "panel", "name": "pmm-check-panel" },
     {
       "type": "dashboard",
       "name": "Home Dashboard",
@@ -104,7 +96,6 @@
       "name": "MongoDB WiredTiger Details",
       "path": "dashboards/MongoDB_WiredTiger_Details.json"
     },
-    { "type": "dashboard", "name": "Prometheus", "path": "dashboards/Prometheus.json" },
     {
       "type": "dashboard",
       "name": "MySQL Performance Schema Details",
@@ -139,11 +130,6 @@
     },
     {
       "type": "dashboard",
-      "name": "MongoDB RocksDB Details",
-      "path": "dashboards/MongoDB_RocksDB_Details.json"
-    },
-    {
-      "type": "dashboard",
       "name": "MongoDB ReplSet Summary",
       "path": "dashboards/MongoDB_ReplSet_Summary.json"
     },
@@ -165,6 +151,11 @@
       "type": "dashboard",
       "name": "MySQL Replication Summary",
       "path": "dashboards/MySQL_Replication_Summary.json"
+    },
+    {
+      "type": "dashboard",
+      "name": "MySQL Group Replication Summary",
+      "path": "dashboards/MySQL_Group_Replication_Summary.json"
     },
     { "type": "dashboard", "name": "Network Details", "path": "dashboards/Network_Details.json" },
     { "type": "dashboard", "name": "Nodes Compare", "path": "dashboards/Nodes_Compare.json" },
@@ -211,7 +202,14 @@
       "type": "dashboard",
       "name": "Node Temperature Details",
       "path": "dashboards/Node_Temperature_Details.json"
-    }
+    },
+    { "type": "dashboard", "name": "VictoriaMetrics", "path": "dashboards/VictoriaMetrics.json" },
+    {
+      "type": "dashboard",
+      "name": "VictoriaMetrics Agents Overview",
+      "path": "dashboards/VictoriaMetrics_Agents_Overview.json"
+    },
+    { "type": "dashboard", "name": "HAProxy Instance Summary", "path": "dashboards/HAProxy_Instance_Summary.json" }
   ],
 
   "dependencies": {

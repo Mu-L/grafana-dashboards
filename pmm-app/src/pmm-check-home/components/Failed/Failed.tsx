@@ -2,7 +2,7 @@ import React, { FC, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Tooltip } from '@grafana/ui';
 import { cx } from 'emotion';
-import { FailedChecks } from 'pmm-check/types';
+import { FailedChecks } from 'pmm-check-home/types';
 import { PMM_SETTINGS_URL, PMM_DATABASE_CHECKS_PANEL_URL } from 'pmm-check-home/CheckPanel.constants';
 import { TooltipText } from './TooltipText';
 import * as styles from './Failed.styles';
@@ -18,8 +18,8 @@ export const Failed: FC<FailedProps> = ({ failed = [0, 0, 0], isSttEnabled, hasN
 
   if (hasNoAccess) {
     return (
-      <div className={styles.Empty} data-qa="db-check-panel-no-access">
-        Insufficient access rights.
+      <div className={styles.Empty} data-qa="unauthorized">
+        Insufficient access permissions.
       </div>
     );
   }
@@ -46,6 +46,7 @@ export const Failed: FC<FailedProps> = ({ failed = [0, 0, 0], isSttEnabled, hasN
   }
 
   const [critical, major, trivial] = failed;
+
   return (
     <div data-qa="db-check-panel-has-checks">
       <Tooltip placement="top" theme="info" content={<TooltipText sum={sum} data={failed} />}>

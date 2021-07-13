@@ -13,7 +13,6 @@
                 "showIn": 0,
                 "tags": [
                     "pmm_annotation",
-                    "$node_name",
                     "$service_name"
                 ],
                 "type": "tags"
@@ -113,6 +112,12 @@
         {
             "breadcrumbItemsMaxAmount": 6,
             "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -123,7 +128,6 @@
             "id": 999,
             "isRootDashboard": false,
             "links": [],
-            "options": {},
             "targets": [
                 {
                     "expr": "",
@@ -139,8 +143,14 @@
             "type": "digiapulssi-breadcrumb-panel"
         },
         {
-            "content": "<h1><i><font color=#5991A7><b><center>Data for </font><font color=#e68a00>$service_name</font> <font color=#5991A7> with</font> </font><font color=#e68a00>$interval</font> <font color=#5991A7>resolution</center></b></font></i></h1><br>",
+            "content": "<h1 style='color:#5991A7;font-weight:bold;text-align:center;font-style:italic'>Data for <span style='color:#e68a00'>$service_name</span> with <span style='color:#e68a00'>$interval</span> resolution</h1>",
             "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -150,7 +160,11 @@
             "id": 30,
             "links": [],
             "mode": "html",
-            "options": {},
+            "options": {
+                "content": "<h1 style='color:#5991A7;font-weight:bold;text-align:center;font-style:italic'>Data for <span style='color:#e68a00'>$service_name</span> with <span style='color:#e68a00'>$interval</span> resolution</h1>",
+                "mode": "html"
+            },
+            "pluginVersion": "7.1.0",
             "title": "",
             "type": "text"
         },
@@ -163,8 +177,14 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#299c46"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "description": "Reports whether PMM Server can connect to the PostgreSQL instance.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "none",
             "gauge": {
                 "maxValue": 100,
@@ -175,7 +195,7 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 2,
+                "w": 4,
                 "x": 0,
                 "y": 4
             },
@@ -196,7 +216,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -249,37 +268,57 @@
             "valueName": "avg"
         },
         {
-            "content": "<h4><b><font color=#e68a00><center><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></center></font></b></h4>",
+            "content": "<h5 style='color:#e68a00;font-weight:bold;text-align:center'><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></h5>",
             "datasource": null,
             "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
-                "w": 4,
-                "x": 2,
+                "w": 5,
+                "x": 4,
                 "y": 4
             },
             "id": 1001,
             "mode": "html",
-            "options": {},
+            "options": {
+                "content": "<h5 style='color:#e68a00;font-weight:bold;text-align:center'><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></h5>",
+                "mode": "html"
+            },
+            "pluginVersion": "7.1.0",
             "timeFrom": null,
             "timeShift": null,
             "title": "Node",
             "type": "text"
         },
         {
-            "content": "<h3><b><font color=#e68a00><center>$version</center></font></b></h3>",
+            "content": "<h3 style='color:#e68a00;font-weight:bold;text-align:center'>$version</h3>",
             "datasource": null,
             "description": "The version of the PostgreSQL instance.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
-                "w": 2,
-                "x": 6,
+                "w": 5,
+                "x": 9,
                 "y": 4
             },
             "id": 65,
             "links": [],
             "mode": "html",
-            "options": {},
+            "options": {
+                "content": "<h3 style='color:#e68a00;font-weight:bold;text-align:center'>$version</h3>",
+                "mode": "html"
+            },
+            "pluginVersion": "7.1.0",
             "title": "Version",
             "type": "text"
         },
@@ -292,100 +331,15 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "Prometheus",
-            "decimals": 0,
-            "description": "The maximum number of client connections allowed.  Change this value with care as there are some memory resources that are allocated on a per-client basis, so setting max_connections higher will generally increase overall PostgreSQL memory usage.",
-            "format": "short",
-            "gauge": {
-                "maxValue": 100,
-                "minValue": 0,
-                "show": false,
-                "thresholdLabels": false,
-                "thresholdMarkers": true
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 8,
-                "y": 4
-            },
-            "id": 86,
-            "interval": null,
-            "links": [
-                {
-                    "targetBlank": true,
-                    "title": "GUC-MAX-CONNECTIONS",
-                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS"
-                }
-            ],
-            "mappingType": 1,
-            "mappingTypes": [
-                {
-                    "name": "value to text",
-                    "value": 1
-                },
-                {
-                    "name": "range to text",
-                    "value": 2
-                }
-            ],
-            "maxDataPoints": 100,
-            "nullPointMode": "connected",
-            "nullText": null,
-            "options": {},
-            "postfix": "",
-            "postfixFontSize": "50%",
-            "prefix": "",
-            "prefixFontSize": "50%",
-            "rangeMaps": [
-                {
-                    "from": "null",
-                    "text": "N/A",
-                    "to": "null"
-                }
-            ],
-            "sparkline": {
-                "fillColor": "rgba(31, 118, 189, 0.18)",
-                "full": false,
-                "lineColor": "rgb(31, 120, 193)",
-                "show": true
-            },
-            "tableColumn": "",
-            "targets": [
-                {
-                    "expr": "avg by (service_name) (max_over_time(pg_settings_max_connections{service_name=~\"$service_name\"}[$interval]) or\nmax_over_time(pg_settings_max_connections{service_name=~\"$service_name\"}[5m]))",
-                    "format": "time_series",
-                    "interval": "$interval",
-                    "intervalFactor": 1,
-                    "legendFormat": "",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": "",
-            "title": "Max Connections",
-            "type": "singlestat",
-            "valueFontSize": "50%",
-            "valueMaps": [
-                {
-                    "op": "=",
-                    "text": "N/A",
-                    "value": "null"
-                }
-            ],
-            "valueName": "current"
-        },
-        {
-            "cacheTimeout": null,
-            "colorBackground": false,
-            "colorValue": false,
-            "colors": [
-                "#299c46",
-                "rgba(237, 129, 40, 0.89)",
-                "#d44a3a"
-            ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Defines the amount of memory the database server uses for shared memory buffers.  Default is 128MB.  Guidance on tuning is 25% of RAM, but generally doesn't exceed 40%.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "bytes",
             "gauge": {
                 "maxValue": 100,
@@ -396,8 +350,8 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 2,
-                "x": 11,
+                "w": 5,
+                "x": 14,
                 "y": 4
             },
             "id": 67,
@@ -423,7 +377,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -473,103 +426,15 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "Prometheus",
-            "decimals": 2,
-            "description": "The setting wal_buffers defines how much memory is used for caching the write-ahead log entries. Generally this value is small (3% of shared_buffers value), but it may need to be modified for heavily loaded servers.",
-            "format": "bytes",
-            "gauge": {
-                "maxValue": 100,
-                "minValue": 0,
-                "show": false,
-                "thresholdLabels": false,
-                "thresholdMarkers": true
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 13,
-                "y": 4
-            },
-            "id": 68,
-            "interval": null,
-            "links": [
-                {
-                    "title": "GUC-WAL-BUFFERS",
-                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-wal.html#GUC-WAL-BUFFERS"
-                },
-                {
-                    "targetBlank": true,
-                    "title": "GUC-SHARED-BUFFERS",
-                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS"
-                }
-            ],
-            "mappingType": 1,
-            "mappingTypes": [
-                {
-                    "name": "value to text",
-                    "value": 1
-                },
-                {
-                    "name": "range to text",
-                    "value": 2
-                }
-            ],
-            "maxDataPoints": 100,
-            "nullPointMode": "connected",
-            "nullText": null,
-            "options": {},
-            "postfix": "",
-            "postfixFontSize": "50%",
-            "prefix": "",
-            "prefixFontSize": "50%",
-            "rangeMaps": [
-                {
-                    "from": "null",
-                    "text": "N/A",
-                    "to": "null"
-                }
-            ],
-            "sparkline": {
-                "fillColor": "rgba(31, 118, 189, 0.18)",
-                "full": false,
-                "lineColor": "rgb(31, 120, 193)",
-                "show": true
-            },
-            "tableColumn": "",
-            "targets": [
-                {
-                    "expr": "avg by (service_name) (max_over_time(pg_settings_wal_buffers_bytes{service_name=~\"$service_name\"}[$interval]) or\nmax_over_time(pg_settings_wal_buffers_bytes{service_name=~\"$service_name\"}[5m]))",
-                    "format": "time_series",
-                    "interval": "$interval",
-                    "intervalFactor": 1,
-                    "refId": "A"
-                }
-            ],
-            "thresholds": "",
-            "title": "Disk-Page Buffers",
-            "type": "singlestat",
-            "valueFontSize": "50%",
-            "valueMaps": [
-                {
-                    "op": "=",
-                    "text": "N/A",
-                    "value": "null"
-                }
-            ],
-            "valueName": "current"
-        },
-        {
-            "cacheTimeout": null,
-            "colorBackground": false,
-            "colorValue": false,
-            "colors": [
-                "#299c46",
-                "rgba(237, 129, 40, 0.89)",
-                "#d44a3a"
-            ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "The parameter work_mem defines the amount of memory assigned for internal sort operations and hash tables before writing to temporary disk files.  The default is 4MB.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "bytes",
             "gauge": {
                 "maxValue": 100,
@@ -580,8 +445,8 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 3,
-                "x": 16,
+                "w": 5,
+                "x": 19,
                 "y": 4
             },
             "id": 69,
@@ -607,7 +472,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -651,105 +515,20 @@
         {
             "cacheTimeout": null,
             "colorBackground": false,
-            "colorValue": false,
-            "colors": [
-                "#299c46",
-                "rgba(237, 129, 40, 0.89)",
-                "#d44a3a"
-            ],
-            "datasource": "Prometheus",
-            "decimals": 2,
-            "description": "PostgreSQL's effective_cache_size variable tunes how much RAM you expect to be available for disk caching.  Generally adding Linux free+cached will give you a good idea.  This value is used by the query planner whether plans will fit in memory, and when defined too low, can lead to some plans rejecting certain indexes.",
-            "format": "bytes",
-            "gauge": {
-                "maxValue": 100,
-                "minValue": 0,
-                "show": false,
-                "thresholdLabels": false,
-                "thresholdMarkers": true
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 19,
-                "y": 4
-            },
-            "id": 70,
-            "interval": null,
-            "links": [
-                {
-                    "targetBlank": true,
-                    "title": "GUC-EFFECTIVE-CACHE-SIZE",
-                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE"
-                }
-            ],
-            "mappingType": 1,
-            "mappingTypes": [
-                {
-                    "name": "value to text",
-                    "value": 1
-                },
-                {
-                    "name": "range to text",
-                    "value": 2
-                }
-            ],
-            "maxDataPoints": 100,
-            "nullPointMode": "connected",
-            "nullText": null,
-            "options": {},
-            "postfix": "",
-            "postfixFontSize": "50%",
-            "prefix": "",
-            "prefixFontSize": "50%",
-            "rangeMaps": [
-                {
-                    "from": "null",
-                    "text": "N/A",
-                    "to": "null"
-                }
-            ],
-            "sparkline": {
-                "fillColor": "rgba(31, 118, 189, 0.18)",
-                "full": false,
-                "lineColor": "rgb(31, 120, 193)",
-                "show": true
-            },
-            "tableColumn": "",
-            "targets": [
-                {
-                    "expr": "avg by (service_name) (max_over_time(pg_settings_effective_cache_size_bytes{service_name=~\"$service_name\"}[$interval]) or\nmax_over_time(pg_settings_effective_cache_size_bytes{service_name=~\"$service_name\"}[5m]))",
-                    "format": "time_series",
-                    "interval": "$interval",
-                    "intervalFactor": 1,
-                    "legendFormat": "",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": "",
-            "title": "Disk Cache Size",
-            "type": "singlestat",
-            "valueFontSize": "50%",
-            "valueMaps": [
-                {
-                    "op": "=",
-                    "text": "N/A",
-                    "value": "null"
-                }
-            ],
-            "valueName": "current"
-        },
-        {
-            "cacheTimeout": null,
-            "colorBackground": false,
             "colorValue": true,
             "colors": [
                 "#d44a3a",
                 "rgba(237, 129, 40, 0.89)",
                 "#299c46"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "description": "Whether autovacuum process is enabled or not.  Generally the solution is to vacuum more often, not less.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "none",
             "gauge": {
                 "maxValue": 100,
@@ -760,9 +539,9 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 2,
-                "x": 22,
-                "y": 4
+                "w": 4,
+                "x": 0,
+                "y": 6
             },
             "id": 85,
             "interval": null,
@@ -787,7 +566,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -839,13 +617,442 @@
             "valueName": "current"
         },
         {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorPostfix": true,
+            "colorValue": true,
+            "colors": [
+                "#d44a3a",
+                "rgba(237, 129, 40, 0.89)",
+                "#299c46"
+            ],
+            "datasource": null,
+            "decimals": 1,
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "format": "s",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 5,
+                "x": 4,
+                "y": 6
+            },
+            "id": 86,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+                {
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "s",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+                {
+                    "from": "null",
+                    "text": "N/A",
+                    "to": "null"
+                }
+            ],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+                {
+                    "expr": "avg by (service_name) (pg_postmaster_uptime_seconds{service_name=~\"$service_name\"})",
+                    "format": "time_series",
+                    "instant": true,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": "3600,86400",
+            "title": "Uptime",
+            "type": "singlestat",
+            "valueFontSize": "50%",
+            "valueMaps": [
+                {
+                    "op": "=",
+                    "text": "N/A",
+                    "value": "null"
+                }
+            ],
+            "valueName": "current"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": null,
+            "decimals": 0,
+            "description": "The maximum number of client connections allowed.  Change this value with care as there are some memory resources that are allocated on a per-client basis, so setting max_connections higher will generally increase overall PostgreSQL memory usage.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "format": "short",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 5,
+                "x": 9,
+                "y": 6
+            },
+            "id": 1005,
+            "interval": null,
+            "links": [
+                {
+                    "targetBlank": true,
+                    "title": "GUC-MAX-CONNECTIONS",
+                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS"
+                }
+            ],
+            "mappingType": 1,
+            "mappingTypes": [
+                {
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+                {
+                    "from": "null",
+                    "text": "N/A",
+                    "to": "null"
+                }
+            ],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [
+                {
+                    "expr": "avg by (service_name) (max_over_time(pg_settings_max_connections{service_name=~\"$service_name\"}[$interval]) or\nmax_over_time(pg_settings_max_connections{service_name=~\"$service_name\"}[5m]))",
+                    "format": "time_series",
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": "",
+            "title": "Max Connections",
+            "type": "singlestat",
+            "valueFontSize": "50%",
+            "valueMaps": [
+                {
+                    "op": "=",
+                    "text": "N/A",
+                    "value": "null"
+                }
+            ],
+            "valueName": "current"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": null,
+            "decimals": 2,
+            "description": "PostgreSQL's effective_cache_size variable tunes how much RAM you expect to be available for disk caching.  Generally adding Linux free+cached will give you a good idea.  This value is used by the query planner whether plans will fit in memory, and when defined too low, can lead to some plans rejecting certain indexes.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "format": "bytes",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 5,
+                "x": 14,
+                "y": 6
+            },
+            "id": 70,
+            "interval": null,
+            "links": [
+                {
+                    "targetBlank": true,
+                    "title": "GUC-EFFECTIVE-CACHE-SIZE",
+                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE"
+                }
+            ],
+            "mappingType": 1,
+            "mappingTypes": [
+                {
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+                {
+                    "from": "null",
+                    "text": "N/A",
+                    "to": "null"
+                }
+            ],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [
+                {
+                    "expr": "avg by (service_name) (max_over_time(pg_settings_effective_cache_size_bytes{service_name=~\"$service_name\"}[$interval]) or\nmax_over_time(pg_settings_effective_cache_size_bytes{service_name=~\"$service_name\"}[5m]))",
+                    "format": "time_series",
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": "",
+            "title": "Disk Cache Size",
+            "type": "singlestat",
+            "valueFontSize": "50%",
+            "valueMaps": [
+                {
+                    "op": "=",
+                    "text": "N/A",
+                    "value": "null"
+                }
+            ],
+            "valueName": "current"
+        },
+        {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+                "#299c46",
+                "rgba(237, 129, 40, 0.89)",
+                "#d44a3a"
+            ],
+            "datasource": null,
+            "decimals": 2,
+            "description": "The setting wal_buffers defines how much memory is used for caching the write-ahead log entries. Generally this value is small (3% of shared_buffers value), but it may need to be modified for heavily loaded servers.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "format": "bytes",
+            "gauge": {
+                "maxValue": 100,
+                "minValue": 0,
+                "show": false,
+                "thresholdLabels": false,
+                "thresholdMarkers": true
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 5,
+                "x": 19,
+                "y": 6
+            },
+            "id": 68,
+            "interval": null,
+            "links": [
+                {
+                    "title": "GUC-WAL-BUFFERS",
+                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-wal.html#GUC-WAL-BUFFERS"
+                },
+                {
+                    "targetBlank": true,
+                    "title": "GUC-SHARED-BUFFERS",
+                    "url": "https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS"
+                }
+            ],
+            "mappingType": 1,
+            "mappingTypes": [
+                {
+                    "name": "value to text",
+                    "value": 1
+                },
+                {
+                    "name": "range to text",
+                    "value": 2
+                }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+                {
+                    "from": "null",
+                    "text": "N/A",
+                    "to": "null"
+                }
+            ],
+            "sparkline": {
+                "fillColor": "rgba(31, 118, 189, 0.18)",
+                "full": false,
+                "lineColor": "rgb(31, 120, 193)",
+                "show": true
+            },
+            "tableColumn": "",
+            "targets": [
+                {
+                    "expr": "avg by (service_name) (max_over_time(pg_settings_wal_buffers_bytes{service_name=~\"$service_name\"}[$interval]) or\nmax_over_time(pg_settings_wal_buffers_bytes{service_name=~\"$service_name\"}[5m]))",
+                    "format": "time_series",
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "refId": "A"
+                }
+            ],
+            "thresholds": "",
+            "title": "Disk-Page Buffers",
+            "type": "singlestat",
+            "valueFontSize": "50%",
+            "valueMaps": [
+                {
+                    "op": "=",
+                    "text": "N/A",
+                    "value": "null"
+                }
+            ],
+            "valueName": "current"
+        },
+        {
+            "collapsed": true,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 8
+            },
+            "id": 1007,
+            "panels": [
+                {
+                    "datasource": "PTSummary",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {}
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 16,
+                        "w": 24,
+                        "x": 0,
+                        "y": 9
+                    },
+                    "id": 1009,
+                    "pluginVersion": "7.1.3",
+                    "targets": [
+                        {
+                            "queryType": {
+                                "queryType": "postgresql",
+                                "type": "postgresql",
+                                "variableName": "service_id"
+                            },
+                            "refId": "A"
+                        }
+                    ],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Service Summary",
+                    "type": "pmm-pt-summary-panel"
+                }
+            ],
+            "title": "Service Summary",
+            "type": "row"
+        },
+        {
             "collapsed": false,
             "datasource": null,
             "gridPos": {
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 6
+                "y": 9
             },
             "id": 74,
             "panels": [],
@@ -859,15 +1066,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 6,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 7
+                "y": 10
             },
             "hiddenSeries": false,
             "id": 23,
@@ -880,7 +1094,7 @@
                 "min": true,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -888,10 +1102,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -935,7 +1147,7 @@
             "title": "PostgreSQL Connections",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -977,15 +1189,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 7
+                "y": 10
             },
             "hiddenSeries": false,
             "id": 34,
@@ -1005,10 +1224,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1049,7 +1266,7 @@
             "title": "Active Connections",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1091,7 +1308,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 15
+                "y": 18
             },
             "id": 76,
             "panels": [],
@@ -1103,15 +1320,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 16
+                "y": 19
             },
             "hiddenSeries": false,
             "id": 36,
@@ -1131,10 +1355,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1191,7 +1413,7 @@
             "title": "Tuples",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1231,15 +1453,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 16
+                "y": 19
             },
             "hiddenSeries": false,
             "id": 24,
@@ -1259,10 +1488,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1272,7 +1499,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(pg_stat_database_tup_returned{service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_returned{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_tup_returned{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_returned{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -1282,7 +1509,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "sum(rate(pg_stat_database_tup_fetched{service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_fetched{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_tup_fetched{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_fetched{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -1299,7 +1526,7 @@
             "title": "Read Tuple Activity",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1339,15 +1566,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 24
+                "y": 27
             },
             "hiddenSeries": false,
             "id": 25,
@@ -1367,10 +1601,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1380,7 +1612,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(pg_stat_database_tup_inserted{service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_inserted{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_tup_inserted{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_inserted{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "interval": "$interval",
                     "intervalFactor": 1,
@@ -1390,7 +1622,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "sum(rate(pg_stat_database_tup_updated{service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_updated{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_tup_updated{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_updated{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "interval": "$interval",
                     "intervalFactor": 1,
@@ -1400,7 +1632,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "sum(rate(pg_stat_database_tup_deleted{service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_deleted{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_tup_deleted{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_tup_deleted{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "interval": "$interval",
                     "intervalFactor": 1,
@@ -1417,7 +1649,7 @@
             "title": "Tuples Changes by Queries",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1459,7 +1691,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 32
+                "y": 35
             },
             "id": 78,
             "panels": [],
@@ -1471,15 +1703,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 33
+                "y": 36
             },
             "hiddenSeries": false,
             "id": 26,
@@ -1499,10 +1738,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1512,7 +1749,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "sum(rate(pg_stat_database_xact_commit{service_name=~\"$service_name\"}[$interval])) or \nsum(irate(pg_stat_database_xact_commit{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_xact_commit{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or \nsum(irate(pg_stat_database_xact_commit{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "interval": "$interval",
                     "intervalFactor": 1,
@@ -1522,7 +1759,7 @@
                     "step": 2
                 },
                 {
-                    "expr": "sum(rate(pg_stat_database_xact_rollback{service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_xact_rollback{service_name=~\"$service_name\"}[5m]))",
+                    "expr": "sum(rate(pg_stat_database_xact_rollback{datname=~\"$database\",service_name=~\"$service_name\"}[$interval])) or\nsum(irate(pg_stat_database_xact_rollback{datname=~\"$database\",service_name=~\"$service_name\"}[5m]))",
                     "format": "time_series",
                     "interval": "$interval",
                     "intervalFactor": 1,
@@ -1539,7 +1776,7 @@
             "title": "Transactions",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1579,15 +1816,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 33
+                "y": 36
             },
             "hiddenSeries": false,
             "id": 18,
@@ -1607,10 +1851,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1637,7 +1879,7 @@
             "title": "Duration of Transactions",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1679,7 +1921,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 41
+                "y": 44
             },
             "id": 80,
             "panels": [],
@@ -1691,15 +1933,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "description": "Cumulative number of temporary files created by queries in this database since service start. All temporary files are counted, regardless of why the temporary file was created (e.g., sorting or hashing), and regardless of the log_temp_files setting.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 42
+                "y": 45
             },
             "hiddenSeries": false,
             "id": 48,
@@ -1719,10 +1969,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1747,7 +1995,7 @@
             "title": "Number of Temp Files",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1787,15 +2035,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "description": "Cumulative amount of data written to temporary files by queries in this database since service start. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 42
+                "y": 45
             },
             "hiddenSeries": false,
             "id": 49,
@@ -1815,10 +2071,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1843,7 +2097,7 @@
                     "refId": "A"
                 },
                 {
-                    "expr": "rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or\nirate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[5m])",
+                    "expr": "rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[$interval]) or\nirate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"|template(0|1)\"}[5m])",
                     "format": "time_series",
                     "hide": true,
                     "interval": "$interval",
@@ -1859,7 +2113,7 @@
             "title": "Size of Temp Files",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1899,15 +2153,23 @@
             "bars": true,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
+            "description": "Number of temporary files created by queries in this database. All temporary files are counted, regardless of why the temporary file was created (e.g., sorting or hashing), and regardless of the log_temp_files setting.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 50
+                "y": 53
             },
             "hiddenSeries": false,
             "id": 1003,
@@ -1927,10 +2189,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 1,
             "points": false,
             "renderer": "flot",
@@ -1955,7 +2215,7 @@
             "title": "Temp Files Activity",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1995,15 +2255,23 @@
             "bars": true,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 50
+                "y": 53
             },
             "hiddenSeries": false,
             "id": 1004,
@@ -2023,10 +2291,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2042,7 +2308,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "avg by (service_name,datname) (rate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[$interval]) or \nrate(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname!~\"template.*\"}[5m]))",
+                    "expr": "avg by (service_name,datname) (increase(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname=~\"$database\",datname!~\"|template(0|1)\"}[$interval]) or \nincrease(pg_stat_database_temp_bytes{service_name=~\"$service_name\",datname=~\"$database\",datname!~\"|template(0|1)\"}[5m]))",
                     "format": "time_series",
                     "hide": false,
                     "interval": "$interval",
@@ -2058,7 +2324,7 @@
             "title": "Temp Files Utilization",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -2100,7 +2366,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 58
+                "y": 61
             },
             "id": 82,
             "panels": [],
@@ -2112,10 +2378,17 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "grid": {},
@@ -2123,7 +2396,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 59
+                "y": 62
             },
             "hiddenSeries": false,
             "id": 3,
@@ -2143,10 +2416,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "connected",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2270,7 +2541,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -2310,10 +2581,17 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -2321,7 +2599,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 59
+                "y": 62
             },
             "hiddenSeries": false,
             "id": 61,
@@ -2341,10 +2619,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "connected",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2415,7 +2691,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -2457,7 +2733,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 67
+                "y": 70
             },
             "id": 84,
             "panels": [],
@@ -2469,15 +2745,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 68
+                "y": 71
             },
             "hiddenSeries": false,
             "id": 50,
@@ -2497,10 +2780,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2538,7 +2819,7 @@
             "title": "Operations with Blocks",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -2579,10 +2860,17 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -2590,7 +2878,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 68
+                "y": 71
             },
             "hiddenSeries": false,
             "id": 2,
@@ -2612,10 +2900,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "connected",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2898,7 +3184,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -2940,7 +3226,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 76
+                "y": 79
             },
             "id": 72,
             "panels": [],
@@ -2952,16 +3238,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "description": "Based on pg_stat_database_conflicts view",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 77
+                "y": 80
             },
             "hiddenSeries": false,
             "id": 28,
@@ -2981,10 +3274,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3051,7 +3342,7 @@
             "title": "Canceled Queries",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -3091,10 +3382,17 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -3102,7 +3400,7 @@
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 77
+                "y": 80
             },
             "hiddenSeries": false,
             "id": 14,
@@ -3123,10 +3421,8 @@
             "links": [],
             "maxPerRow": 6,
             "nullPointMode": "connected",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": true,
+            "pluginVersion": "7.1.3",
             "pointradius": 1,
             "points": false,
             "renderer": "flot",
@@ -3153,7 +3449,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "cumulative"
             },
             "type": "graph",
@@ -3170,7 +3466,7 @@
                     "format": "percentunit",
                     "label": "",
                     "logBase": 1,
-                    "max": null,
+                    "max": "1.1",
                     "min": "0",
                     "show": true
                 },
@@ -3193,15 +3489,22 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 85
+                "y": 88
             },
             "hiddenSeries": false,
             "id": 22,
@@ -3223,10 +3526,8 @@
             "linewidth": 2,
             "links": [],
             "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
             "percentage": false,
+            "pluginVersion": "7.1.3",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3265,7 +3566,7 @@
             "title": "Checkpoint stats",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -3307,7 +3608,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 93
+                "y": 96
             },
             "id": 60,
             "panels": [
@@ -3338,7 +3639,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 94
+                "y": 97
             },
             "id": 291,
             "panels": [
@@ -3352,7 +3653,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "The parameter shows how long a system has been \u201cup\u201d and running without a shut down or restart.",
                     "editable": true,
@@ -3440,7 +3741,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "#d44a3a"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "The system load is a measurement of the computational work the system is performing. Each running process either using or waiting for CPU resources adds 1 to the load.",
                     "format": "none",
@@ -3526,7 +3827,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "RAM (Random Access Memory) is the hardware in a computing device where the operating system, application programs and data in current use are kept so they can be quickly reached by the device's processor.",
                     "editable": true,
@@ -3614,7 +3915,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "#299c46"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Percent of Memory Available\nNote: on Modern Linux Kernels amount of Memory Available for application is not the same as Free+Cached+Buffers",
                     "format": "percent",
@@ -3700,7 +4001,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "RAM + SWAP",
                     "editable": true,
@@ -3788,7 +4089,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "rgba(50, 172, 45, 0.97)"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Sum of disk space on all partitions. Note  it can be significantly over-reported in some installations",
                     "editable": true,
@@ -3882,7 +4183,7 @@
                         "rgba(237, 129, 40, 0.89)",
                         "#299c46"
                     ],
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Lowest percent of the disk space available",
                     "format": "percent",
@@ -3960,7 +4261,7 @@
                     "valueName": "current"
                 },
                 {
-                    "content": "<h5><b><font color=#e68a00><center><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></center></font></b></h5>\n\n\n",
+                    "content": "<h5 style='color:#e68a00;font-weight:bold;text-align:center'><a href=\"/graph/d/node-instance-summary/node-summary?var-node_name=$node_name\" target=\"_blank\">$crop_host...</a></h5>",
                     "datasource": null,
                     "description": "",
                     "gridPos": {
@@ -3991,7 +4292,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "The CPU time is measured in clock ticks or seconds. It is useful to measure CPU time as a percentage of the CPU's capacity, which is called the CPU usage.",
                     "editable": true,
@@ -4074,7 +4375,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4122,7 +4423,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "When a system is running with maximum CPU utilization, the transmitting and receiving threads must all share the available CPU. This will cause data to be queued more frequently to cope with the lack of CPU. CPU Saturation may be measured as the length of a wait queue, or the time spent waiting on the queue.",
                     "editable": true,
@@ -4215,7 +4516,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4260,7 +4561,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Disk I/O includes read or write or input/output operations involving a physical disk. It is the speed with which the data transfer takes place between the hard disk drive and RAM.\n\nSwap Activity is memory management that involves swapping sections of memory to and from physical storage.",
                     "editable": true,
@@ -4387,7 +4688,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4426,7 +4727,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Network traffic refers to the amount of data moving across a network at a given point in time.",
                     "editable": true,
@@ -4514,7 +4815,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4554,7 +4855,7 @@
         }
     ],
     "refresh": "1m",
-    "schemaVersion": 21,
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [
         "Percona",
@@ -4620,7 +4921,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4632,7 +4933,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4642,7 +4943,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_up{service_name=~\"$service_name\"},node_name)",
                 "hide": 2,
                 "includeAll": false,
@@ -4654,7 +4955,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4664,7 +4965,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_up{node_name=~\"$node_name\"},node_name)",
                 "hide": 2,
                 "includeAll": false,
@@ -4676,7 +4977,7 @@
                 "refresh": 2,
                 "regex": "/(.?.?.?.?.?.?.?.?.?.?.?.?.?).*/",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4686,7 +4987,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_up, service_name)",
                 "hide": 0,
                 "includeAll": false,
@@ -4698,7 +4999,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4706,9 +5007,9 @@
                 "useTags": false
             },
             {
-                "allValue": ".*",
+                "allValue": "",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 0,
                 "includeAll": true,
@@ -4720,7 +5021,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4730,7 +5031,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4752,7 +5053,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4764,7 +5065,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4774,7 +5075,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4786,7 +5087,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4796,7 +5097,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4808,7 +5109,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4818,7 +5119,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4830,7 +5131,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4840,7 +5141,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4852,7 +5153,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4862,7 +5163,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4874,7 +5175,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4884,7 +5185,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4896,7 +5197,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4906,7 +5207,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4918,7 +5219,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4928,7 +5229,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4940,7 +5241,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4950,7 +5251,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4962,7 +5263,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4972,7 +5273,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -4984,7 +5285,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4994,7 +5295,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5006,7 +5307,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5016,7 +5317,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5028,7 +5329,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5038,7 +5339,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5050,7 +5351,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5060,7 +5361,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5072,7 +5373,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5082,7 +5383,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5094,7 +5395,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5104,7 +5405,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5116,7 +5417,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5126,7 +5427,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5138,7 +5439,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5148,7 +5449,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5160,7 +5461,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5170,7 +5471,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5182,7 +5483,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5192,7 +5493,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5204,7 +5505,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5214,7 +5515,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5226,7 +5527,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5236,7 +5537,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5248,7 +5549,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5258,7 +5559,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5270,7 +5571,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5280,7 +5581,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5292,7 +5593,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5302,7 +5603,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5314,7 +5615,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5324,7 +5625,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5336,7 +5637,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5346,7 +5647,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5358,7 +5659,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5368,7 +5669,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5380,7 +5681,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5390,7 +5691,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5402,7 +5703,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5412,7 +5713,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5424,7 +5725,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5434,7 +5735,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5446,7 +5747,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5456,7 +5757,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5468,7 +5769,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5478,7 +5779,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5490,7 +5791,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5500,7 +5801,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5512,7 +5813,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5522,7 +5823,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5534,7 +5835,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5544,7 +5845,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "includeAll": false,
@@ -5556,7 +5857,7 @@
                 "refresh": 2,
                 "regex": "/ ([0-9\\.]+)/",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5566,7 +5867,7 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, environment)",
                 "hide": 2,
                 "includeAll": true,
@@ -5578,7 +5879,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5588,7 +5889,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, cluster)",
                 "hide": 2,
                 "includeAll": true,
@@ -5600,7 +5901,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5610,7 +5911,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, replication_set)",
                 "hide": 2,
                 "includeAll": true,
@@ -5622,7 +5923,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5632,7 +5933,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, node_type)",
                 "hide": 2,
                 "includeAll": true,
@@ -5644,7 +5945,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5654,7 +5955,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_type)",
                 "hide": 2,
                 "includeAll": true,
@@ -5666,7 +5967,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -5676,7 +5977,29 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "hide": 2,
+                "includeAll": true,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, schema)",
                 "hide": 2,
                 "includeAll": true,
@@ -5688,7 +6011,29 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
+                "definition": "label_values(pg_up{service_name=\"$service_name\"}, service_id)",
+                "hide": 2,
+                "includeAll": false,
+                "label": "Service ID",
+                "multi": false,
+                "name": "service_id",
+                "options": [],
+                "query": "label_values(pg_up{service_name=\"$service_name\"}, service_id)",
+                "refresh": 2,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

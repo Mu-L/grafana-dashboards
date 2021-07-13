@@ -13,8 +13,7 @@
                 "showIn": 0,
                 "tags": [
                     "pmm_annotation",
-                    "$node_name",
-                    "$service_name"
+                    "$node_name"
                 ],
                 "type": "tags"
             },
@@ -112,6 +111,12 @@
         {
             "breadcrumbItemsMaxAmount": 6,
             "datasource": null,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -122,7 +127,6 @@
             "id": 999,
             "isRootDashboard": false,
             "links": [],
-            "options": {},
             "targets": [
                 {
                     "expr": "",
@@ -159,6 +163,13 @@
             "datasource": null,
             "decimals": 2,
             "description": "Shows the percentage of disk space utilization for every mountpoint defined on the system. Having some of the mountpoints close to 100% space utilization is not good because of the risk to have a \u201cdisk full\u201d error that can block one of the services or even cause a crash of the entire system.\n\nIn case when the mountpoint is close to 100% consider to remove unused files or to expand the space allocated to the mountpoint.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "gridPos": {
@@ -188,9 +199,10 @@
             "linewidth": 2,
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -204,6 +216,12 @@
                     "interval": "$interval",
                     "legendFormat": "{{mountpoint}}",
                     "refId": "A"
+                },
+                {
+                    "expr": "avg by (node_name) (azure_storage_percent_average{node_name=~\"$node_name\"}/100)",
+                    "interval": "$interval",
+                    "legendFormat": "Azure Storage",
+                    "refId": "B"
                 }
             ],
             "thresholds": [],
@@ -213,9 +231,10 @@
             "title": "Mountpoint Usage",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
+            "transformations": [],
             "type": "graph",
             "xaxis": {
                 "buckets": null,
@@ -226,6 +245,7 @@
             },
             "yaxes": [
                 {
+                    "$$hashKey": "object:166",
                     "decimals": 2,
                     "format": "percentunit",
                     "label": null,
@@ -235,6 +255,7 @@
                     "show": true
                 },
                 {
+                    "$$hashKey": "object:167",
                     "format": "short",
                     "label": null,
                     "logBase": 1,
@@ -256,6 +277,13 @@
             "datasource": null,
             "decimals": 2,
             "description": "Shows information about the disk space usage of the specified mountpoint.\n\n**Used** is the amount of space used.\n\n**Free** is the amount of space not in use.\n\n**Used+Free** is the total disk space allocated to the mountpoint.\n\nHaving *Free* close to 0 B is not good because of the risk to have a \u201cdisk full\u201d error that can block one of the services or even cause a crash of the entire system.\n\nIn case Free is close to 0 B consider to remove unused files or to expand the space allocated to the mountpoint.",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 6,
             "fillGradient": 0,
             "gridPos": {
@@ -283,9 +311,10 @@
             "maxPerRow": 2,
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -293,14 +322,17 @@
             "repeatDirection": "h",
             "seriesOverrides": [
                 {
+                    "$$hashKey": "object:215",
                     "alias": "/Used/",
                     "color": "#FFB357"
                 },
                 {
+                    "$$hashKey": "object:216",
                     "alias": "/Free/",
                     "color": "#FA6400"
                 },
                 {
+                    "$$hashKey": "object:217",
                     "alias": "Usage",
                     "fill": 0,
                     "legend": false,
@@ -319,18 +351,30 @@
                     "refId": "A"
                 },
                 {
-                    "expr": "avg by (node_name,mountpoint) (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\", mountpoint=\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\", mountpoint=\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m]))",
+                    "expr": "avg by (node_name,mountpoint) (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\", mountpoint=\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\", mountpoint=\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m]) or (storage_limit_bytes_average{node_name=~\"$node_name\"} - azure_storage_used_bytes_average{node_name=~\"$node_name\"}))",
                     "hide": false,
                     "interval": "$interval",
                     "legendFormat": "Free (device {{ device }}, {{ fstype }})",
                     "refId": "B"
                 },
                 {
-                    "expr": "avg by (node_name,mountpoint) (1 - (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])) / (max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) \nor max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])))",
+                    "expr": "avg by (node_name,mountpoint) (1 - (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])) / (max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) \nor max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])) or azure_storage_percent_average{node_name=~\"$node_name\"}/100)",
                     "hide": false,
                     "interval": "$interval",
                     "legendFormat": "Usage",
                     "refId": "C"
+                },
+                {
+                    "expr": "avg by (node_name) (node_filesystem_size_bytes{node_name=~\"$node_name\"} - azure_storage_used_bytes_average{node_name=~\"$node_name\"})",
+                    "interval": "$interval",
+                    "legendFormat": "Free (Azure Storage)",
+                    "refId": "D"
+                },
+                {
+                    "expr": "avg by (node_name) (azure_storage_used_bytes_average{node_name=~\"$node_name\"})",
+                    "interval": "$interval",
+                    "legendFormat": "Used (Azure Storage)",
+                    "refId": "E"
                 }
             ],
             "thresholds": [],
@@ -340,137 +384,7 @@
             "title": "Mountpoint $mountpoint",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "decimals": 2,
-                    "format": "bytes",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": "0",
-                    "show": true
-                },
-                {
-                    "decimals": 2,
-                    "format": "percentunit",
-                    "label": null,
-                    "logBase": 1,
-                    "max": "1",
-                    "min": "0",
-                    "show": false
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": null,
-            "decimals": 2,
-            "description": "Shows information about the disk space usage of the specified mountpoint.\n\n**Used** is the amount of space used.\n\n**Free** is the amount of space not in use.\n\n**Used+Free** is the total disk space allocated to the mountpoint.\n\nHaving *Free* close to 0 B is not good because of the risk to have a \u201cdisk full\u201d error that can block one of the services or even cause a crash of the entire system.\n\nIn case Free is close to 0 B consider to remove unused files or to expand the space allocated to the mountpoint.",
-            "fill": 6,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 12,
-                "y": 11
-            },
-            "hiddenSeries": false,
-            "id": 1024,
-            "legend": {
-                "alignAsTable": true,
-                "avg": true,
-                "current": false,
-                "max": true,
-                "min": true,
-                "show": true,
-                "sort": "avg",
-                "sortDesc": true,
-                "total": false,
-                "values": true
-            },
-            "lines": true,
-            "linewidth": 2,
-            "maxPerRow": 2,
-            "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
-            "percentage": false,
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "repeat": null,
-            "repeatDirection": "h",
-            "repeatIteration": 1586510591544,
-            "repeatPanelId": 1023,
-            "seriesOverrides": [
-                {
-                    "alias": "/Used/",
-                    "color": "#FFB357"
-                },
-                {
-                    "alias": "/Free/",
-                    "color": "#FA6400"
-                },
-                {
-                    "alias": "Usage",
-                    "fill": 0,
-                    "legend": false,
-                    "yaxis": 2
-                }
-            ],
-            "spaceLength": 10,
-            "stack": true,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "expr": "avg by (node_name,mountpoint) ((max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])) - (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])))",
-                    "hide": false,
-                    "interval": "$interval",
-                    "legendFormat": "Used (device {{ device }}, {{ fstype }})",
-                    "refId": "A"
-                },
-                {
-                    "expr": "avg by (node_name,mountpoint) (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\", mountpoint=\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\", mountpoint=\"$mountpoint\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m]))",
-                    "hide": false,
-                    "interval": "$interval",
-                    "legendFormat": "Free (device {{ device }}, {{ fstype }})",
-                    "refId": "B"
-                },
-                {
-                    "expr": "avg by (node_name,mountpoint) (1 - (max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) or max_over_time(node_filesystem_free_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])) / (max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[$interval]) \nor max_over_time(node_filesystem_size_bytes{node_name=~\"$node_name\",mountpoint=~\"$mountpoint\",fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}[5m])))",
-                    "hide": false,
-                    "interval": "$interval",
-                    "legendFormat": "Usage",
-                    "refId": "C"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Mountpoint $mountpoint",
-            "tooltip": {
-                "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -525,11 +439,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Shows average latency for Reads and Writes IO Devices.  Higher than typical latency for highly loaded storage indicates saturation (overload) and is frequent cause of performance problems.  Higher than normal latency also can indicate internal storage problems.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -561,9 +482,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": true,
             "renderer": "flot",
@@ -610,7 +532,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -650,11 +572,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Shows amount of physical IOs (reads and writes) different devices are serving. Spikes in number of IOs served often corresponds to performance problems due to IO subsystem overload.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -686,9 +615,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": false,
             "renderer": "flot",
@@ -734,7 +664,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -773,11 +703,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Shows volume of reads and writes the storage is handling. This can be better measure of IO capacity usage for network attached and SSD storage as it is often bandwidth limited.  Amount of data being written to the disk can be used to estimate Flash storage life time.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -809,9 +746,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": false,
             "renderer": "flot",
@@ -849,7 +787,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -889,11 +827,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Shows how much disk was loaded for reads or writes as average number of outstanding requests at different period of time.  High disk load is a good measure of actual storage utilization. Different storage types handle load differently - some will show latency increases on low loads others can handle higher load with no problems.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -925,9 +870,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": true,
             "renderer": "flot",
@@ -964,7 +910,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1003,11 +949,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
-            "description": "Shows disk Utilization as percent of the time when there was at least one IO request in flight. It is designed to match utilization available in iostat tool. It is not very good measure of true IO Capacity Utilization. Consider looking at IO latency and Disk Load Graphs instead.",
+            "description": "Shows disk Utilization as a percentage of the time when there was at least one IO request in flight. It is designed to match utilization available in iostat tool. The graph augments the IO latency and Disk Load Graphs, allowing to determine if the disk load was evenly distributed in time or consuming the IO momentarily. Higher utilization increases the likeliness of IO queuing. Always consider this metric along with response time and IO queue depth.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1039,9 +992,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": false,
             "renderer": "flot",
@@ -1065,7 +1019,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1105,11 +1059,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Shows how effectively Operating System is able to merge logical IO requests into physical requests.  This is a good measure of the IO locality which can be used for workload characterization.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1141,9 +1102,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": true,
             "renderer": "flot",
@@ -1187,7 +1149,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1229,11 +1191,18 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Shows average size of a single disk operation.",
             "editable": true,
             "error": false,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 2,
             "fillGradient": 0,
             "grid": {},
@@ -1265,9 +1234,10 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "percentage": false,
+            "pluginVersion": "7.3.7",
             "pointradius": 1,
             "points": true,
             "renderer": "flot",
@@ -1280,7 +1250,7 @@
                     "calculatedInterval": "2m",
                     "datasourceErrors": {},
                     "errors": {},
-                    "expr": "sum(\n(rate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) * 512 / \nrate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or \n(irate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) * 512 / \nirate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
+                    "expr": "sum(\n(rate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) / \nrate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or \n(irate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) / \nirate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
                     "interval": "$interval",
                     "intervalFactor": 1,
                     "legendFormat": "Read size",
@@ -1293,7 +1263,7 @@
                     "calculatedInterval": "2m",
                     "datasourceErrors": {},
                     "errors": {},
-                    "expr": "sum(\n(rate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) * 512 / \nrate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or \n(irate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) * 512 / \nirate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
+                    "expr": "sum(\n(rate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) / \nrate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or \n(irate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) / \nirate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
                     "interval": "$interval",
                     "intervalFactor": 1,
                     "legendFormat": "Write size",
@@ -1311,7 +1281,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1362,11 +1332,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Shows average latency for Reads and Writes IO Devices.  Higher than typical latency for highly loaded storage indicates saturation (overload) and is frequent cause of performance problems.  Higher than normal latency also can indicate internal storage problems.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -1398,9 +1375,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": true,
                     "renderer": "flot",
@@ -1446,7 +1424,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1486,11 +1464,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Shows amount of physical IOs (reads and writes) different devices are serving. Spikes in number of IOs served often corresponds to performance problems due to IO subsystem overload.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -1522,9 +1507,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": false,
                     "renderer": "flot",
@@ -1570,7 +1556,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1609,11 +1595,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Shows volume of reads and writes the storage is handling. This can be better measure of IO capacity usage for network attached and SSD storage as it is often bandwidth limited.  Amount of data being written to the disk can be used to estimate Flash storage life time.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -1645,9 +1638,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": false,
                     "renderer": "flot",
@@ -1693,7 +1687,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1733,11 +1727,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Shows how much disk was loaded for reads or writes as average number of outstanding requests at different period of time.  High disk load is a good measure of actual storage utilization. Different storage types handle load differently - some will show latency increases on low loads others can handle higher load with no problems.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -1769,9 +1770,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": true,
                     "renderer": "flot",
@@ -1817,7 +1819,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1856,11 +1858,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
-                    "description": "Shows disk Utilization as percent of the time when there was at least one IO request in flight. It is designed to match utilization available in iostat tool. It is not very good measure of true IO Capacity Utilization. Consider looking at IO latency and Disk Load Graphs instead.",
+                    "description": "Shows disk Utilization as a percentage of the time when there was at least one IO request in flight. It is designed to match utilization available in iostat tool. The graph augments the IO latency and Disk Load Graphs, allowing to determine if the disk load was evenly distributed in time or consuming the IO momentarily. Higher utilization increases the likeliness of IO queuing. Always consider this metric along with response time and IO queue depth.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -1892,9 +1901,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": false,
                     "renderer": "flot",
@@ -1927,7 +1937,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1966,11 +1976,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Shows how effectively Operating System is able to merge logical IO requests into physical requests.  This is a good measure of the IO locality which can be used for workload characterization.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -2002,9 +2019,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": true,
                     "renderer": "flot",
@@ -2048,7 +2066,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2090,11 +2108,18 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Shows average size of a single disk operation.",
                     "editable": true,
                     "error": false,
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {},
+                            "links": []
+                        },
+                        "overrides": []
+                    },
                     "fill": 2,
                     "fillGradient": 0,
                     "grid": {},
@@ -2126,9 +2151,10 @@
                     "links": [],
                     "nullPointMode": "null",
                     "options": {
-                        "dataLinks": []
+                        "alertThreshold": true
                     },
                     "percentage": false,
+                    "pluginVersion": "7.3.7",
                     "pointradius": 1,
                     "points": true,
                     "renderer": "flot",
@@ -2141,7 +2167,7 @@
                             "calculatedInterval": "2m",
                             "datasourceErrors": {},
                             "errors": {},
-                            "expr": "avg by (node_name,device) (\n(rate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) * 512 / rate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or (irate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) * 512 / irate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
+                            "expr": "avg by (node_name,device) (\n(rate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) / rate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or (irate(node_disk_read_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) / irate(node_disk_reads_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
                             "interval": "$interval",
                             "intervalFactor": 1,
                             "legendFormat": "Read size: {{ device }}",
@@ -2154,7 +2180,7 @@
                             "calculatedInterval": "2m",
                             "datasourceErrors": {},
                             "errors": {},
-                            "expr": "avg by (node_name,device) (\n(rate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) * 512 / rate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or (irate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) * 512 / irate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
+                            "expr": "avg by (node_name,device) (\n(rate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[$interval]) / rate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[$interval])) > 0 or (irate(node_disk_written_bytes_total{node_name=\"$node_name\", device=~\"$device\"}[5m]) / irate(node_disk_writes_completed_total{node_name=\"$node_name\", device=~\"$device\"}[5m])) > 0\n) ",
                             "interval": "$interval",
                             "intervalFactor": 1,
                             "legendFormat": "Write size: {{ device }}",
@@ -2172,7 +2198,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2214,7 +2240,7 @@
         }
     ],
     "refresh": "1m",
-    "schemaVersion": 21,
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [
         "OS",
@@ -2228,7 +2254,8 @@
                 "auto_count": 200,
                 "auto_min": "1s",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "error": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": "Interval",
@@ -2286,8 +2313,9 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
-                "definition": "label_values({__name__=~\"node_disk_reads_completed_total|aws_rds_disk_queue_depth_average|rdsosmetrics_diskIO_readLatency\"}, node_name)",
+                "datasource": "Metrics",
+                "definition": "label_values({__name__=~\"node_disk_reads_completed_total|aws_rds_disk_queue_depth_average|rdsosmetrics_diskIO_readLatency|azure_storage_percent_average\"}, node_name)",
+                "error": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": "Node Name",
@@ -2295,12 +2323,12 @@
                 "multiFormat": "regex values",
                 "name": "node_name",
                 "options": [],
-                "query": "label_values({__name__=~\"node_disk_reads_completed_total|aws_rds_disk_queue_depth_average|rdsosmetrics_diskIO_readLatency\"}, node_name)",
+                "query": "label_values({__name__=~\"node_disk_reads_completed_total|aws_rds_disk_queue_depth_average|rdsosmetrics_diskIO_readLatency|azure_storage_percent_average\"}, node_name)",
                 "refresh": 2,
                 "refresh_on_load": false,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "instance",
                 "tags": [],
                 "tagsQuery": "up",
@@ -2311,8 +2339,9 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"node_disk_reads_completed_total|rdsosmetrics_diskIO_util\",node_name=~\"$node_name\", device!~\"dm-.+\"}, device)",
+                "error": null,
                 "hide": 0,
                 "includeAll": true,
                 "label": "Device",
@@ -2325,7 +2354,7 @@
                 "refresh_on_load": false,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "instance",
                 "tags": [],
                 "tagsQuery": "up",
@@ -2335,8 +2364,32 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "error": null,
+                "hide": 2,
+                "includeAll": true,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values(node_filesystem_avail_bytes{node_name=~\"$node_name\", fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs\"}, mountpoint)",
+                "error": null,
                 "hide": 2,
                 "includeAll": true,
                 "label": "Mountpoint",
@@ -2347,7 +2400,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

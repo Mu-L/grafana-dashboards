@@ -133,7 +133,6 @@
             "id": 999,
             "isRootDashboard": true,
             "links": [],
-            "options": {},
             "targets": [
                 {
                     "expr": "",
@@ -205,7 +204,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -259,7 +257,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**MySQL Uptime**\n\nThe amount of time since the last restart of the MySQL server process.",
             "editable": true,
@@ -296,7 +294,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "s",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -347,7 +344,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(50, 172, 45, 0.97)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**MySQL Uptime**\n\nThe amount of time since the last restart of the MySQL server process.",
             "editable": true,
@@ -384,7 +381,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "s",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -434,7 +430,7 @@
                 "#3274D9",
                 "rgba(50, 172, 45, 0.97)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Current QPS**\n\nBased on the queries reported by MySQL's ``SHOW STATUS`` command, it is the number of statements executed by the server within the last second. This variable includes statements executed within stored programs, unlike the Questions variable. It does not count \n``COM_PING`` or ``COM_STATISTICS`` commands.",
             "editable": true,
@@ -477,7 +473,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -528,7 +523,7 @@
                 "#3274D9",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**InnoDB Buffer Pool Size**\n\nInnoDB maintains a storage area called the buffer pool for caching data and indexes in memory.  Knowing how the InnoDB buffer pool works, and taking advantage of it to keep frequently accessed data in memory, is one of the most important aspects of MySQL tuning. The goal is to keep the working set in memory. In most cases, this should be between 60%-90% of available memory on a dedicated database host, but depends on many factors.",
             "editable": true,
@@ -571,7 +566,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -636,7 +630,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "description": "",
             "editable": true,
@@ -673,7 +667,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -724,7 +717,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -761,7 +754,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -784,7 +776,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "expr": "clamp_max(max(max by (service_name) ((max_over_time(mysql_global_status_max_used_connections{service_name=~\"$service_name\"}[$interval]) or max_over_time(mysql_global_status_max_used_connections{service_name=~\"$service_name\"}[5m]))) / max by (service_name) (mysql_global_variables_max_connections{service_name=~\"$service_name\"})),1)",
                     "interval": "5m",
                     "refId": "A"
@@ -807,7 +799,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -844,7 +836,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -898,7 +889,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -935,7 +926,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -990,7 +980,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -1027,7 +1017,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -1079,7 +1068,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Max Connections** \n\nMax Connections is the maximum permitted number of simultaneous client connections. By default, this is 151. Increasing this value increases the number of file descriptors that mysqld requires. If the required number of descriptors are not available, the server reduces the value of Max Connections.\n\nmysqld actually permits Max Connections + 1 clients to connect. The extra connection is reserved for use by accounts that have the SUPER privilege, such as root.\n\nMax Used Connections is the maximum number of connections that have been in use simultaneously since the server started.\n\nConnections is the number of connection attempts (successful or not) to the MySQL server.",
                     "editable": true,
@@ -1179,7 +1168,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -1272,7 +1261,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -1285,7 +1274,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -1328,7 +1317,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Aborted Connections**\n\nWhen a given host connects to MySQL and the connection is interrupted in the middle (for example due to bad credentials), MySQL keeps that info in a system table (since 5.6 this table is exposed in performance_schema).\n\nIf the amount of failed requests without a successful connection reaches the value of max_connect_errors, mysqld assumes that something is wrong and blocks the host from further connection.\n\nTo allow connections from that host again, you need to issue the ``FLUSH HOSTS`` statement.",
                     "editable": true,
@@ -1419,7 +1408,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "cumulative"
                     },
                     "type": "graph",
@@ -1512,7 +1501,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -1525,7 +1514,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -1584,7 +1573,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Active Threads**\n\nThreads Connected is the number of open connections, while Threads Running is the number of threads not sleeping.",
                     "editable": true,
@@ -1677,7 +1666,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1771,7 +1760,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -1784,7 +1773,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -1827,7 +1816,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Active Threads**\n\nThreads Connected is the number of open connections, while Threads Running is the number of threads not sleeping.",
                     "editable": true,
@@ -1919,7 +1908,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2013,7 +2002,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -2026,7 +2015,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -2069,7 +2058,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Thread Cache**\n\nThe thread_cache_size variable sets how many threads the server should cache to reuse. When a client disconnects, the client's threads are put in the cache if the cache is not full. It is autosized in MySQL 5.6.8 and above (capped to 100). Requests for threads are satisfied by reusing threads taken from the cache if possible, and only when the cache is empty is a new thread created.\n\n* *Threads_created*: The number of threads created to handle connections.\n* *Threads_cached*: The number of threads in the thread cache.",
                     "editable": true,
@@ -2166,7 +2155,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2257,7 +2246,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -2270,7 +2259,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -2336,7 +2325,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -2373,7 +2362,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -2424,7 +2412,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -2461,7 +2449,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -2512,7 +2499,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -2549,7 +2536,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -2602,7 +2588,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -2639,7 +2625,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -2692,7 +2677,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -2729,7 +2714,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -2788,7 +2772,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Queries**\n\nThe number of statements executed by the server. This variable includes statements executed within stored programs, unlike the Questions variable. It does not count  ``COM_PING`` or ``COM_STATISTICS``  commands.",
                     "editable": true,
@@ -2887,7 +2871,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2977,7 +2961,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -2990,7 +2974,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [],
@@ -3017,7 +3001,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Questions**\n\nThe number of statements executed by the server. This includes only statements sent to the server by clients and not statements executed within stored programs, unlike the Queries used in the QPS calculation. \n\nThis variable does not count the following commands:\n* ``COM_PING``\n* ``COM_STATISTICS``\n* ``COM_STMT_PREPARE``\n* ``COM_STMT_CLOSE``\n* ``COM_STMT_RESET``",
                     "editable": true,
@@ -3118,7 +3102,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3208,7 +3192,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -3221,7 +3205,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -3280,7 +3264,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**InnoDB I/O**\n\n_Data Writes_ - The total number of InnoDB data writes.\\\n_Data Reads_ - The total number of InnoDB data reads (OS file reads).\\\n_Log Writes_ - The number of physical writes to the InnoDB redo log file.\\\n_Data Fsyncs_ - The number of fsync() operations. The frequency of fsync() calls is influenced by the setting of the `innodb_flush_method` configuration option.",
                     "editable": true,
@@ -3372,7 +3356,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3462,7 +3446,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -3475,7 +3459,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -3518,7 +3502,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**InnoDB I/O**\n\n_Data Writes_ - The total number of InnoDB data writes.\\\n_Data Reads_ - The total number of InnoDB data reads (OS file reads).\\\n_Log Writes_ - The number of physical writes to the InnoDB redo log file.\\\n_Data Fsyncs_ - The number of fsync() operations. The frequency of fsync() calls is influenced by the setting of the `innodb_flush_method` configuration option.",
                     "editable": true,
@@ -3610,7 +3594,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3700,7 +3684,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -3713,7 +3697,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -3756,7 +3740,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**InnoDB I/O**\n\n_Data Writes_ - The total number of InnoDB data writes.\\\n_Data Reads_ - The total number of InnoDB data reads (OS file reads).\\\n_Log Writes_ - The number of physical writes to the InnoDB redo log file.\\\n_Data Fsyncs_ - The number of fsync() operations. The frequency of fsync() calls is influenced by the setting of the `innodb_flush_method` configuration option.",
                     "editable": true,
@@ -3855,7 +3839,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3945,7 +3929,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -3958,7 +3942,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -4024,7 +4008,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -4061,7 +4045,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -4112,7 +4095,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -4149,7 +4132,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -4200,7 +4182,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -4237,7 +4219,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -4288,7 +4269,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "description": "",
             "editable": true,
@@ -4325,7 +4306,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -4376,7 +4356,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "description": "",
             "editable": true,
@@ -4413,7 +4393,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -4470,7 +4449,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -4561,7 +4540,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4651,7 +4630,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -4664,7 +4643,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -4707,7 +4686,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Select Types**\n\nAs with most relational databases, selecting based on indexes is more efficient than scanning an entire table's data. Here we see the counters for selects not done with indexes.\n\n* ***Select Scan*** is how many queries caused full table scans, in which all the data in the table had to be read and either discarded or returned.\n* ***Select Range*** is how many queries used a range scan, which means MySQL scanned all rows in a given range.\n* ***Select Full Join*** is the number of joins that are not joined on an index, this is usually a huge performance hit.",
                     "editable": true,
@@ -4801,7 +4780,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -4891,7 +4870,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -4904,7 +4883,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -4963,7 +4942,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Sorts**\n\nDue to a query's structure, order, or other requirements, MySQL sorts the rows before returning them. For example, if a table is ordered 1 to 10 but you want the results reversed, MySQL then has to sort the rows to return 10 to 1.\n\nThis graph also shows when sorts had to scan a whole table or a given range of a table in order to return the results and which could not have been sorted via an index.",
                     "editable": true,
@@ -5057,7 +5036,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -5147,7 +5126,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}&fullscreen&panelId=22",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}&fullscreen&panelId=22",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -5160,7 +5139,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -5219,7 +5198,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Table Locks**\n\nMySQL takes a number of different locks for varying reasons. In this graph we see how many Table level locks MySQL has requested from the storage engine. In the case of InnoDB, many times the locks could actually be row locks as it only takes table level locks in a few specific cases.\n\nIt is most useful to compare Locks Immediate and Locks Waited. If Locks waited is rising, it means you have lock contention. Otherwise, Locks Immediate rising and falling is normal activity.",
                     "editable": true,
@@ -5311,7 +5290,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -5401,7 +5380,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -5414,7 +5393,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -5481,7 +5460,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -5518,7 +5497,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -5569,7 +5547,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -5606,7 +5584,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -5657,7 +5634,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -5694,7 +5671,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -5747,7 +5723,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -5784,7 +5760,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -5837,7 +5812,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -5874,7 +5849,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -5933,7 +5907,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Network Traffic**\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
                     "editable": true,
@@ -5945,7 +5919,7 @@
                         "h": 8,
                         "w": 12,
                         "x": 0,
-                        "y": 24
+                        "y": 25
                     },
                     "hiddenSeries": false,
                     "id": 9,
@@ -5992,7 +5966,7 @@
                         }
                     ],
                     "spaceLength": 10,
-                    "stack": true,
+                    "stack": false,
                     "steppedLine": false,
                     "targets": [
                         {
@@ -6027,7 +6001,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -6065,7 +6039,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Network Traffic**\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
                     "editable": true,
@@ -6077,7 +6051,7 @@
                         "h": 8,
                         "w": 12,
                         "x": 12,
-                        "y": 24
+                        "y": 25
                     },
                     "hiddenSeries": false,
                     "id": 420,
@@ -6124,7 +6098,7 @@
                         }
                     ],
                     "spaceLength": 10,
-                    "stack": true,
+                    "stack": false,
                     "steppedLine": false,
                     "targets": [
                         {
@@ -6157,7 +6131,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -6211,7 +6185,7 @@
                     "bars": true,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Query Cache Memory**\n\nThe query cache has huge scalability problems in that only one thread can do an operation in the query cache at the same time. This serialization is true not only for SELECTs, but also for INSERT/UPDATE/DELETE.\n\nThis also means that the larger the `query_cache_size` is set to, the slower those operations become. In concurrent environments, the MySQL Query Cache quickly becomes a contention point, decreasing performance. MariaDB and AWS Aurora have done work to try and eliminate the query cache contention in their flavors of MySQL, while MySQL 8.0 has eliminated the query cache feature.\n\nThe recommended settings for most environments is to set:\n  ``query_cache_type=0``\n  ``query_cache_size=0``\n\nNote that while you can dynamically change these values, to completely remove the contention point you have to restart the database.",
                     "editable": true,
@@ -6298,7 +6272,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": false,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -6390,7 +6364,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}&amp;fullscreen&panelId=22",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -6403,7 +6377,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -6469,7 +6443,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -6560,7 +6534,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -6650,7 +6624,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -6663,7 +6637,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -6706,7 +6680,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "editable": true,
                     "error": false,
@@ -6797,7 +6771,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -6887,7 +6861,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -6900,7 +6874,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -6967,7 +6941,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -7004,7 +6978,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -7057,7 +7030,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -7094,7 +7067,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -7145,7 +7117,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 0,
             "description": "",
             "editable": true,
@@ -7182,7 +7154,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -7233,7 +7204,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": null,
             "description": "",
             "editable": true,
@@ -7270,7 +7241,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -7321,7 +7291,7 @@
                 "rgba(237, 129, 40, 0.89)",
                 "rgba(245, 54, 54, 0.9)"
             ],
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "",
             "editable": true,
@@ -7358,7 +7328,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -7417,7 +7386,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**MySQL Table Open Cache Status**\n\nThe recommendation is to set the `table_open_cache_instances` to a loose correlation to virtual CPUs, keeping in mind that more instances means the cache is split more times. If you have a cache set to 500 but it has 10 instances, each cache will only have 50 cached.\n\nThe `table_definition_cache` and `table_open_cache` can be left as default as they are auto-sized MySQL 5.6 and above (ie: do not set them to any value).",
                     "editable": true,
@@ -7510,7 +7479,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -7601,7 +7570,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -7614,7 +7583,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -7673,7 +7642,7 @@
                     "bars": true,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "",
                     "editable": true,
@@ -7746,7 +7715,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": false,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -7786,7 +7755,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "",
                     "editable": true,
@@ -7880,7 +7849,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -7919,7 +7888,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Number of currently cached .frm files.",
                     "editable": true,
@@ -8017,7 +7986,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -8108,7 +8077,7 @@
                     "savedComposites": [],
                     "savedOverrides": [
                         {
-                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?var-service_name=${__cell_name}",
+                            "clickThrough": "/graph/d/mysql-instance-summary/mysql-instance-summary?from=$__from&to=$__to&var-service_name=${__cell_name}",
                             "colors": [
                                 "#299c46",
                                 "#e5ac0e",
@@ -8121,7 +8090,7 @@
                             "metricName": "/.*/",
                             "operatorName": "current",
                             "prefix": "",
-                            "sanitizeURLEnabled": true,
+                            "sanitizeURLEnabled": false,
                             "scaledDecimals": null,
                             "suffix": "",
                             "thresholds": [
@@ -8166,7 +8135,7 @@
         }
     ],
     "refresh": "1m",
-    "schemaVersion": 21,
+    "schemaVersion": 22,
     "style": "dark",
     "tags": [
         "Percona",
@@ -8181,7 +8150,7 @@
                 "auto_count": 200,
                 "auto_min": "1s",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "hide": 0,
                 "includeAll": false,
                 "label": "Interval",
@@ -8238,10 +8207,11 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up, region)",
                 "hide": 0,
                 "includeAll": true,
+                "index": -1,
                 "label": "Region",
                 "multi": true,
                 "name": "region",
@@ -8250,7 +8220,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8260,10 +8230,11 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up, environment)",
                 "hide": 0,
                 "includeAll": true,
+                "index": -1,
                 "label": "Environment",
                 "multi": true,
                 "name": "environment",
@@ -8272,7 +8243,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8282,10 +8253,11 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up, cluster)",
                 "hide": 0,
                 "includeAll": true,
+                "index": -1,
                 "label": "Cluster",
                 "multi": true,
                 "name": "cluster",
@@ -8294,7 +8266,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8304,10 +8276,11 @@
             {
                 "allValue": ".*",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up, replication_set)",
                 "hide": 0,
                 "includeAll": true,
+                "index": -1,
                 "label": "Replication Set",
                 "multi": true,
                 "name": "replication_set",
@@ -8316,7 +8289,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8327,10 +8300,11 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{region=~\"$region\",environment=~\"$environment\",cluster=~\"$cluster\",replication_set=~\"$replication_set\"}, node_name)",
                 "hide": 0,
                 "includeAll": true,
+                "index": -1,
                 "label": "Node Name",
                 "multi": true,
                 "multiFormat": "regex values",
@@ -8341,7 +8315,7 @@
                 "refresh_on_load": false,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": null,
                 "tags": [],
                 "tagsQuery": null,
@@ -8352,10 +8326,11 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{region=~\"$region\",environment=~\"$environment\",cluster=~\"$cluster\",replication_set=~\"$replication_set\",node_name=~\"$node_name\"}, service_name)",
                 "hide": 0,
                 "includeAll": true,
+                "index": -1,
                 "label": "Service Name",
                 "multi": true,
                 "multiFormat": "regex values",
@@ -8366,7 +8341,7 @@
                 "refresh_on_load": false,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": null,
                 "tags": [],
                 "tagsQuery": null,
@@ -8376,10 +8351,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{node_name=\"$node_name\"}, node_id)",
                 "hide": 2,
                 "includeAll": false,
+                "index": -1,
                 "label": "Node_ID",
                 "multi": false,
                 "name": "node_id",
@@ -8388,7 +8364,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8398,10 +8374,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{node_name=\"$node_name\"}, instance)",
                 "hide": 2,
                 "includeAll": false,
+                "index": -1,
                 "label": "Agent_ID",
                 "multi": false,
                 "name": "agent_id",
@@ -8410,7 +8387,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8420,10 +8397,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{service_name=~\"$service_name\"}, service_id)",
                 "hide": 2,
                 "includeAll": false,
+                "index": -1,
                 "label": "Service_ID",
                 "multi": false,
                 "name": "service_id",
@@ -8432,7 +8410,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8442,10 +8420,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{node_name=\"$node_name\"}, az)",
                 "hide": 2,
                 "includeAll": false,
+                "index": -1,
                 "label": "Az",
                 "multi": false,
                 "name": "az",
@@ -8454,7 +8433,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8464,10 +8443,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, node_type)",
                 "hide": 2,
                 "includeAll": true,
+                "index": -1,
                 "label": "Type",
                 "multi": true,
                 "name": "node_type",
@@ -8476,7 +8456,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8486,10 +8466,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(mysql_up{node_name=\"$node_name\"}, node_model)",
                 "hide": 2,
                 "includeAll": false,
+                "index": -1,
                 "label": "Node_model",
                 "multi": false,
                 "name": "node_model",
@@ -8498,7 +8479,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8508,10 +8489,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_stat_database_tup_fetched{service_name=~\"$service_name\",datname!~\"template.*|postgres\"},datname)",
                 "hide": 2,
                 "includeAll": true,
+                "index": -1,
                 "label": "Database",
                 "multi": true,
                 "name": "database",
@@ -8520,7 +8502,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8530,10 +8512,11 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_type)",
                 "hide": 2,
                 "includeAll": true,
+                "index": -1,
                 "label": "Type",
                 "multi": true,
                 "name": "service_type",
@@ -8542,7 +8525,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -8552,10 +8535,34 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "hide": 2,
+                "includeAll": true,
+                "index": -1,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, schema)",
                 "hide": 2,
                 "includeAll": true,
+                "index": -1,
                 "label": "Schema",
                 "multi": true,
                 "name": "schema",
@@ -8564,7 +8571,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

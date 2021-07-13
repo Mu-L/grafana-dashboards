@@ -13,8 +13,7 @@
                 "showIn": 0,
                 "tags": [
                     "pmm_annotation",
-                    "$node_name",
-                    "$service_name"
+                    "$node_name"
                 ],
                 "type": "tags"
             },
@@ -159,7 +158,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "fill": 6,
             "fillGradient": 0,
@@ -179,7 +178,7 @@
                 "min": true,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -248,7 +247,7 @@
             "title": "Memory Usage",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -291,7 +290,7 @@
             "bars": true,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "fill": 2,
             "fillGradient": 0,
@@ -357,7 +356,7 @@
             "title": "Free Memory Percent",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -400,7 +399,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Dirty** Memory waiting to be written back to disk\n\n**Bounce** Memory used for block device bounce buffers\n\n**Mapped** Files which have been mmaped, such as libraries\n\n**KernelStack** The memory the kernel stack uses. This is not reclaimable.",
             "editable": true,
@@ -512,7 +511,7 @@
             "tooltip": {
                 "msResolution": false,
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -551,7 +550,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Memory successfully allocated on this node as intended.",
             "fill": 6,
@@ -572,7 +571,7 @@
                 "min": true,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -625,7 +624,7 @@
             "title": "NUMA Allocation Hits",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -665,7 +664,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Memory missed** is allocated on a node despite the process preferring some different node.\n\n**Memory foreign** is intended for a node, but actually allocated on some different node.",
             "fill": 2,
@@ -789,7 +788,7 @@
             "title": "NUMA Allocation Missed",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -830,7 +829,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Active anonymous memory** that has been used more recently and usually not swapped out.\n\n**Inactive anonymous memory** that has not been used recently and can be swapped out.",
             "fill": 2,
@@ -896,7 +895,7 @@
             "title": "Anonymous Memory",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -936,7 +935,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Active(file)** Pagecache memory that has been used more recently and usually not reclaimed until needed\n\n**Inactive(file)** Pagecache memory that can be reclaimed without huge performance impact",
             "fill": 2,
@@ -1002,7 +1001,7 @@
             "title": "NUMA File (PageCache)",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1042,7 +1041,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Shmem** Total used shared memory (shared between several processes, thus including RAM disks, SYS-V-IPC and BSD like SHMEM)",
             "fill": 2,
@@ -1064,7 +1063,7 @@
                 "rightSide": false,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1123,7 +1122,7 @@
             "title": "Shared Memory",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1163,7 +1162,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Total** Number of hugepages being allocated by the kernel (Defined with vm.nr_hugepages)\n\n**Free** The number of hugepages not being allocated by a process\n\n**Surp**  The number of hugepages in the pool above the value in vm.nr_hugepages. The maximum number of surplus hugepages is controlled by vm.nr_overcommit_hugepages.",
             "fill": 2,
@@ -1185,7 +1184,7 @@
                 "rightSide": false,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1248,7 +1247,7 @@
             "title": "HugePages Statistic",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1288,7 +1287,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Memory allocated on a node while a process was running on it.",
             "fill": 6,
@@ -1309,7 +1308,7 @@
                 "min": true,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1369,7 +1368,7 @@
             "title": "Local Processes",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1410,7 +1409,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "Memory allocated on a node while a process was running on some other node.",
             "fill": 2,
@@ -1431,7 +1430,7 @@
                 "min": true,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1496,7 +1495,7 @@
             "title": "Remote Processes",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1539,7 +1538,7 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "Prometheus",
+            "datasource": null,
             "decimals": 2,
             "description": "**Slab** allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.\n\n**SReclaimable** The part of the Slab that might be reclaimed (such as caches).\n\n**SUnreclaim** The part of the Slab that can't be reclaimed under memory pressure",
             "fill": 6,
@@ -1561,7 +1560,7 @@
                 "rightSide": false,
                 "show": true,
                 "sort": "avg",
-                "sortDesc": false,
+                "sortDesc": true,
                 "total": false,
                 "values": true
             },
@@ -1621,7 +1620,7 @@
             "title": "Slab Memory",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1675,7 +1674,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 6,
                     "fillGradient": 0,
@@ -1695,7 +1694,7 @@
                         "min": true,
                         "show": true,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -1763,7 +1762,7 @@
                     "title": "Node $node - Memory Usage",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1806,7 +1805,7 @@
                     "bars": true,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "fill": 2,
                     "fillGradient": 0,
@@ -1863,7 +1862,7 @@
                     "title": "Node $node - Free Memory Percent",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -1906,7 +1905,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Dirty** Memory waiting to be written back to disk\n\n**Bounce** Memory used for block device bounce buffers\n\n**Mapped** Files which have been mmaped, such as libraries\n\n**KernelStack** The memory the kernel stack uses. This is not reclaimable.",
                     "editable": true,
@@ -2018,7 +2017,7 @@
                     "tooltip": {
                         "msResolution": false,
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2057,7 +2056,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Memory successfully allocated on this node as intended.",
                     "fill": 2,
@@ -2123,7 +2122,7 @@
                     "title": "Node $node - NUMA Allocation Hits",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2163,7 +2162,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Memory missed** is allocated on a node despite the process preferring some different node.\n\n**Memory foreign** is intended for a node, but actually allocated on some different node.",
                     "fill": 2,
@@ -2237,7 +2236,7 @@
                     "title": "Node $node - NUMA Allocation Missed/Foreign",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2278,7 +2277,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Active** Anonymous memory that has been used more recently and usually not swapped out\n\n**Inactive** Anonymous memory that has not been used recently and can be swapped out",
                     "fill": 2,
@@ -2344,7 +2343,7 @@
                     "title": "Node $node - Anonymous Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2384,7 +2383,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Active(file)** Pagecache memory that has been used more recently and usually not reclaimed until needed\n\n**Inactive(file)** Pagecache memory that can be reclaimed without huge performance impact",
                     "fill": 2,
@@ -2450,7 +2449,7 @@
                     "title": "Node $node - NUMA File (PageCache)",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2490,7 +2489,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Shmem** Total used shared memory (shared between several processes, thus including RAM disks, SYS-V-IPC and BSD like SHMEM)",
                     "fill": 2,
@@ -2512,7 +2511,7 @@
                         "rightSide": false,
                         "show": true,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -2571,7 +2570,7 @@
                     "title": "Node $node - Shared Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2611,7 +2610,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Total** Number of hugepages being allocated by the kernel (Defined with vm.nr_hugepages)\n\n**Free** The number of hugepages not being allocated by a process\n\n**Surp**  The number of hugepages in the pool above the value in vm.nr_hugepages. The maximum number of surplus hugepages is controlled by vm.nr_overcommit_hugepages.",
                     "fill": 2,
@@ -2633,7 +2632,7 @@
                         "rightSide": false,
                         "show": true,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -2696,7 +2695,7 @@
                     "title": "Node $node - HugePages Statistic",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2736,7 +2735,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Memory allocated on this node while a process was running on it.",
                     "fill": 2,
@@ -2794,7 +2793,7 @@
                     "title": "Node $node - Local Processes",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2834,7 +2833,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "Memory allocated on this node while a process was running on some other node.",
                     "fill": 2,
@@ -2892,7 +2891,7 @@
                     "title": "Node $node - Remote Processes",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -2934,7 +2933,7 @@
                     "bars": false,
                     "dashLength": 10,
                     "dashes": false,
-                    "datasource": "Prometheus",
+                    "datasource": null,
                     "decimals": 2,
                     "description": "**Slab** allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.\n\n**SReclaimable** The part of the Slab that might be reclaimed (such as caches).\n\n**SUnreclaim** The part of the Slab that can't be reclaimed under memory pressure",
                     "fill": 6,
@@ -2956,7 +2955,7 @@
                         "rightSide": false,
                         "show": true,
                         "sort": "avg",
-                        "sortDesc": false,
+                        "sortDesc": true,
                         "total": false,
                         "values": true
                     },
@@ -3016,7 +3015,7 @@
                     "title": "Node $node - Slab Memory",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3071,7 +3070,7 @@
             "type": "row"
         },
         {
-            "content": "<h1><i><font color=#5991A7><b><center>Free Memory Pages</center></b></font></i></h1>\n\n\n",
+            "content": "<h1 style='color:#5991A7;font-weight:bold;text-align:center'>Free Memory Pages</h1>\n\n",
             "datasource": null,
             "description": "/proc/buddyinfo gives you an idea about the free memory fragments on your Linux box. You get to view the free fragments for each available order, for different zones of each numa node.\n\nNote: Non-Uniform Memory Access (NUMA) refers to multiprocessor systems whose memory is divided into multiple memory nodes.\n\nEach NUMA node is an entry in the kernel linked list pgdat_list. Each node is further divided into zones. Here are some example zone types:\n\nDMA Zone: Lower 16 MiB of RAM used by legacy devices that cannot address anything beyond the first 16MiB of RAM.\n\nDMA32 Zone (only on x86_64): Some devices can't address beyond the first 4GiB of RAM. On x86, this zone would probably be covered by Normal zone\n\nNormal Zone: Anything above zone DMA and doesn't require kernel tricks to be addressable. Typically on x86, this is 16MiB to 896MiB. Many kernel operations require that the memory being used be from this zone\n\nHighmem Zone (x86 only): Anything above 896MiB.",
             "gridPos": {
@@ -3167,7 +3166,7 @@
             "title": "Zone $zone",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -3269,7 +3268,7 @@
             "title": "Zone $zone",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -3371,7 +3370,7 @@
             "title": "Zone $zone",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 5,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -3482,7 +3481,7 @@
                     "title": "Node $node - Zone $zone",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3584,7 +3583,7 @@
                     "title": "Node $node - Zone $zone",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3686,7 +3685,7 @@
                     "title": "Node $node - Zone $zone",
                     "tooltip": {
                         "shared": true,
-                        "sort": 0,
+                        "sort": 5,
                         "value_type": "individual"
                     },
                     "type": "graph",
@@ -3742,7 +3741,7 @@
                 "auto_count": 200,
                 "auto_min": "1s",
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "hide": 0,
                 "includeAll": false,
                 "label": "Interval",
@@ -3800,7 +3799,7 @@
                 "allFormat": "glob",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(node_memory_numa_MemTotal, node_name)",
                 "hide": 0,
                 "includeAll": false,
@@ -3814,7 +3813,7 @@
                 "refresh_on_load": false,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "instance",
                 "tags": [],
                 "tagsQuery": "up",
@@ -3825,7 +3824,7 @@
                 "allFormat": "wildcard",
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "",
                 "hide": 2,
                 "hideLabel": false,
@@ -3840,7 +3839,7 @@
                 "refresh_on_load": false,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
+                "sort": 5,
                 "tagValuesQuery": "instance",
                 "tags": [],
                 "tagsQuery": "up",
@@ -3850,7 +3849,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(node_memory_numa_numa_hit_total,node)",
                 "hide": 2,
                 "includeAll": false,
@@ -3862,7 +3861,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3872,7 +3871,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(node_buddyinfo_blocks{node_name=~\"$node_name\"}, zone)",
                 "hide": 2,
                 "includeAll": true,
@@ -3884,7 +3883,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3894,7 +3893,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_name)",
                 "hide": 2,
                 "includeAll": true,
@@ -3906,7 +3905,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3916,7 +3915,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, environment)",
                 "hide": 2,
                 "includeAll": true,
@@ -3928,7 +3927,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3938,7 +3937,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, cluster)",
                 "hide": 2,
                 "includeAll": true,
@@ -3950,7 +3949,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3960,7 +3959,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, replication_set)",
                 "hide": 2,
                 "includeAll": true,
@@ -3972,7 +3971,7 @@
                 "refresh": 2,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -3982,7 +3981,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values(pg_stat_database_tup_fetched{service_name=~\"$service_name\",datname!~\"template.*|postgres\"},datname)",
                 "hide": 2,
                 "includeAll": true,
@@ -4005,7 +4004,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4015,7 +4014,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, node_type)",
                 "hide": 2,
                 "includeAll": true,
@@ -4027,7 +4026,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4037,7 +4036,7 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, service_type)",
                 "hide": 2,
                 "includeAll": true,
@@ -4049,7 +4048,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",
@@ -4059,7 +4058,30 @@
             {
                 "allValue": null,
                 "current": {},
-                "datasource": "Prometheus",
+                "datasource": "Metrics",
+                "definition": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "hide": 2,
+                "includeAll": true,
+                "index": -1,
+                "label": "Username",
+                "multi": true,
+                "name": "username",
+                "options": [],
+                "query": "label_values(mysql_info_schema_user_statistics_connected_time_seconds_total{service_name=\"$service_name\"},user)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 5,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {},
+                "datasource": "Metrics",
                 "definition": "label_values({__name__=~\"pg_up|mysql_up|mongodb_up|proxysql_mysql_status_active_transactions\"}, schema)",
                 "hide": 2,
                 "includeAll": true,
@@ -4071,7 +4093,7 @@
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
+                "sort": 5,
                 "tagValuesQuery": "",
                 "tags": [],
                 "tagsQuery": "",

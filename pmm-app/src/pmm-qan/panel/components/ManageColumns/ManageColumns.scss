@@ -1,0 +1,14 @@
+.add-columns .ant-select-selection {
+  border-radius: 2px;
+}
+
+.ant-select-dropdown,
+li.ant-select-dropdown-menu-item {
+  background-color: #3d3d3d;
+  color: white;
+  border-radius: 0;
+}
+
+.fields__select-field .ant-select-dropdown-menu-item-active .select-item {
+  background-color: #cccccc;
+}
